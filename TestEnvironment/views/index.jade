@@ -1,0 +1,87 @@
+extends layout
+
+block content
+
+  div(class='container body' onload="startTime();displayDate();")
+    div(class='main_container')
+      div(class='row tile_count')
+        div(class='animated flipInY col-md-2 col-sm-4 col-xs-4 tile_stats_count')
+          div(class='left')
+          i(class='fa fa-gear fa-5x' id="editIcon")
+          i(class='fa fa-user fa-5x' id="userIcon" )
+        div(class="animated flipInY col-md-2 col-sm-4 col-xs-4 tile_stats_count homestate")
+          div(class='left')
+          h4(id="currentMode") Current mode
+          h1(id="homestateID")
+        div(class="animated flipInY col-md-4 col-sm-4 col-xs-4 tile_stats_count")
+          div(class="left")
+          div(class="right")
+            img(src= '/images/futurehome-logo-trans2.png')
+        div(class="animated flipInY col-md-2 col-xs-4 tile_stats_count")
+          div(class="left")
+          div(class="right")
+            div(class="clock")
+        div(class="animated flipInY col-md-2 col-sm-4 col-xs-4 tile_stats_count")
+          div(class="left")
+          div(class="right")
+            div(class="theDate")
+      div(class="row")
+        div(class="col-md-8 col-sm-8 col-xs-12")
+          div(class="row x_title")
+            div(class="col-md-9")
+              h3(id="energyOverview") Energy Overview
+          div(class="col-md-8 col-sm-8 col-xs-8")
+            div
+              svg(id="area")
+          div(class="clearfix")
+
+      //Weather widget
+      div(class="col-md-3 col-sm- col-xs-12")
+        div(class="x_panel overflow_hidden" id="weather_wrapper")
+          div(class="x_title")
+            h2(class="text-center" id="WeatherReport") Weather Report:
+              label(for="selector")
+              select(id="selector" )
+                option(value="oslo") Oslo
+                option(value="bergen") Bergen
+                option(value="trondheim") Trondheim
+                option(value="stavanger") Stavanger
+            div(class="clearfix")
+          div(class="x_content")
+            div(class="row")
+              div(class="col-sm-4")
+                div(class="weather-icon")
+                  div(align="center")
+                    img(id="iconTest" src="")
+              div(class="col-sm-4")
+                div(class="weather-text")
+                  h2(id="weatherDegrees") Outside
+                  h3(class="degrees", id="wInsideTemp")
+              div(class="col-sm-4")
+                div(class="weather-text")
+                  h2(id="weatherDegrees") Inside
+                  h3(class="degrees", id="wInsideTemp")
+
+            div(class="clearfix")
+
+            div(class="row weather-day")
+              div(class="col-sm-4")
+                div(class="daily-weather")
+                  h2(class="day" id="day1-txt")
+                  h3(class="day" id="day1-degrees")
+                  h1(class="aligncenter")
+                    img(id="iconTest1" src="")
+              div(class="col-sm-4")
+                div(class="daily-weather")
+                  h2(class="day" id="day2-txt")
+                  h3(class="day" id="day2-degrees")
+                  h1(class="aligncenter")
+                    img(id="iconTest2" src="")
+                div(class="col-sm-4")
+                  div(class="daily-weather")
+                    h2(class="day" id="day3-txt")
+                    h3(class="day" id="day3-degrees")
+                    h1(class="aligncenter")
+                      img(id="iconTest3" src="")
+                div(class="clearfix")
+

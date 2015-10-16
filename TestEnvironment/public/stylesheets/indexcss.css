@@ -1,0 +1,104 @@
+#editIcon {
+    padding-right:55px;
+    color:white;
+    align:center;
+}
+
+#userIcon {
+    color:white;
+}
+
+#homestateID {
+    align:center;
+    margin-top:-15px;
+    color: #f5f5f5;
+}
+#currentMode {
+    margin-left: 20px;
+    margin-top:-5px;
+    align:center;
+}
+#energyOverview{
+    text-align: center;
+    padding-left: 200px;
+}
+
+#weather_wrapper{
+    height:334px;
+}
+
+#WeatherReport{
+    font_size:2em;
+}
+
+#selector{
+    vertical-align: middle;
+    max-width: 120px;
+}
+
+#iconTest{
+    min-width:100%;
+    height:auto;
+    min-heigh: 100%;
+    width:auto;
+}
+
+#weatherDegrees{
+    line-height:150%;
+    font-weight: bold;
+    font-size:24px;
+    align:center;
+}
+
+#wInsideTemp #wOutsideTemp {
+    line-height:120%;
+}
+
+.aligncenter{
+    align: center;
+}
+
+#homestateID{
+    padding-top: 10px;
+}
+img{
+    height: auto;
+    width: auto;
+    max-width: 300px;
+    max-height: 300px;
+}
+
+
+body {
+    font: 10px sans-serif;
+}
+
+.axis path,
+.axis line {
+    fill: none;
+    stroke: #000;
+    shape-rendering: crispEdges;
+}
+.area {
+    fill: steelblue;
+}
+
+
+#clock, #theDate {
+    height: 120px;
+    width: 200px;
+    margin: auto;
+    position: absolute;
+    top: 0; left: 0; bottom: 0; right: 0;
+    padding-top: 15px;
+    font-family: digital-7, courier, monospace;
+    text-align: center;
+    color: white;
+    font-size: 50px;
+    /*background-color: #80d4ea;*/
+}
+
+body {
+    margin: 0 !important;
+    padding: 0 !important;
+}

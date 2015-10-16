@@ -140,6 +140,36 @@ app.delete('/api/todos/:todo_id', function(req, res) {
         });
     });
 });
+
+app.get("/api/weather/", function(reg, res){
+    https.get({
+        hostname: 'unstable.futurehome.no',
+        port: 443,
+        path: '/api/v2/sites/B6088F84-DAB6-420D-B89C-828489DD199A/fragments/xs',
+        agent: false,  // create a new agent just for this one request
+        headers: {
+            'Authorization': 'Bearer mWRuGZZc5U2Q8oHUIixwenL8craSMx14HxIWIkDJ',
+            'Accept': 'application/json'
+        }
+    }, function (result) {
+        var buffer = "",
+            data,
+            route;
+
+        result.on("data", function (chunk) {
+            buffer += chunk;
+        });
+
+        result.on("end", function (err) {
+            // finished transferring data
+            // dump the raw data
+            data = JSON.parse(buffer);
+            res.json(data);
+
+        });
+    });
+})
+
 /*
 app.get('*', function (req, res) {
     res.sendfile('./public/index.html'); // load the single view file (angular will

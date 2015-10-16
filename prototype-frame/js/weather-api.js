@@ -22,6 +22,9 @@ jQuery(document).ready(function($) {
                 celsius = celsius.toFixed(1);   // Only get 1 didget
                 console.log(celsius);
                 document.getElementById('wOutsideTemp').innerHTML = celsius.toString();
+
+
+
                 /*
                  // The weather report
                  var weatherReport = parsed_json["forecast"]["simpleforecast"]['forecastday'][0]["conditions"];
@@ -134,6 +137,22 @@ jQuery(document).ready(function($) {
 
             }
         });
+
+        $.ajax({
+            url: "http://localhost:8081/api/weather",
+            success: function (parsed_json) {
+                console.log(parsed_json.fragment.site.temperature.inside);
+                document.getElementById('wInsideTemp').innerHTML = parsed_json.fragment.site.temperature.inside.toFixed(1);
+                document.getElementById('wOutsideTemp').innerHTML = parsed_json.fragment.site.temperature.outside.toFixed(1);
+
+            },
+            error: function(err){
+                console.log(err);
+            }
+        });
+
+
+
     };
     var le = document.getElementById("selector");
     var lecity = le.options[le.selectedIndex].value;
