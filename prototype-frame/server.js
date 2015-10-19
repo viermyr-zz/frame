@@ -30,47 +30,13 @@ var Todo = mongoose.model('Todo', {
 
 // api ---------------------------------------------------------------------
 
-/*
-https.get({
-    hostname: 'unstable.futurehome.no',
-    port: 443,
-    path: '/api/v2/sites/B6088F84-DAB6-420D-B89C-828489DD199A/fragments/xs',
-    agent: false,  // create a new agent just for this one request
-    headers: {
-        'Authorization': 'Bearer mWRuGZZc5U2Q8oHUIixwenL8craSMx14HxIWIkDJ',
-        'Accept': 'application/json'
-    }
-}, function (res) {
-    var buffer = "",
-        data,
-        route;
-
-    res.on("data", function (chunk) {
-        buffer += chunk;
-    });
-
-    res.on("end", function () {
-
-        // finished transferring data
-        // dump the raw data
-        dataShit = JSON.parse(buffer);
-        insideTemperature = dataShit.fragment.site.temperature.inside.toFixed(2);
-
-        console.log(insideTemperature);
-
-        // window.document.getElementById("wInsideTemp").innerHTML = insideTemperature;
-    });
-});
-
-*/
-
 app.get('/', function (req, res) {
     res.sendfile('public/index.html'); // load the single view file (angular will
                                          //  handle the page changes on the front-end)
 });
 
 // API call for receiving stock quotes from yahoo finance
-
+/*
 var stockQutes = function(ticker){
     yahooFinance.snapshot({
             symbol: ticker,
@@ -83,7 +49,7 @@ var stockQutes = function(ticker){
 };
 stockQutes('AAPL');
 stockQutes('MSFT');
-
+*/
 
 
 // routes ======================================================================
@@ -141,6 +107,18 @@ app.delete('/api/todos/:todo_id', function(req, res) {
     });
 });
 
+app.get("/api/stocks/", function(req,res){
+    yahooFinance.snapshot({
+            symbols: ['AAPL', 'MSFT', 'GOOG', 'AMZN', 'TWTR', 'TSLA', 'EBAY', 'BIDU'],
+            fields: ['s', 'n', 'd2', 'l1', 'o', 'p2']
+        }, function(err, snapshot){
+            //console.log(snapshot);
+            res.json(snapshot);
+        }
+    );
+
+});
+/*
 app.get("/api/weather/", function(reg, res){
     https.get({
         hostname: 'unstable.futurehome.no',
@@ -166,16 +144,10 @@ app.get("/api/weather/", function(reg, res){
             data = JSON.parse(buffer);
             res.json(data);
 
+
         });
     });
-})
-
-/*
-app.get('*', function (req, res) {
-    res.sendfile('./public/index.html'); // load the single view file (angular will
-                                         //  handle the page changes on the front-end)
 });
 */
-
 app.listen(port);
 console.log("App listening on port: "+  port);
