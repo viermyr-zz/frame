@@ -71,7 +71,7 @@ body.nav-sm ul.nav.child_menu {
     padding: 10px;
     width: 210px;
     z-index: 4000;
-    background: #3E5367;
+    background: #6f95b9;
     display: none;
 }
 
@@ -283,7 +283,7 @@ red,
 
 dark,
 .dark {
-    color: #34495E;
+    color: #658db6;
 }
 
 .border-blue {
@@ -370,7 +370,7 @@ dark,
 
 body {
     color: #73879C;
-    background: #2A3F54;
+    background: #28a23c;
     /*#ECF0F1; #FCFCFC*/
     
     font-family: "Helvetica Neue", Roboto, Arial, "Droid Sans", sans-serif;

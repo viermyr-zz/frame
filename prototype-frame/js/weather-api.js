@@ -23,18 +23,6 @@ jQuery(document).ready(function($) {
                 //console.log(celsius);
                 document.getElementById('wOutsideTemp').innerHTML = celsius.toString();
 
-
-
-                /*
-                 // The weather report
-                 var weatherReport = parsed_json["forecast"]["simpleforecast"]['forecastday'][0]["conditions"];
-                 console.log(weatherReport);
-                 document.getElementById('w-description').innerHTML = weatherReport;
-                 */
-
-                // Icon for illustration
-
-
                 // TOMORROWS WEATHER
                 // The day of the week (short)
                 var forecastDayPlus1 = {};
@@ -91,11 +79,12 @@ jQuery(document).ready(function($) {
                 // ICON TESTING
                 var theIcons = [
                     "/images/clear.gif", "/images/mostlycloudy.gif", "/images/partlycloudy.gif",
-                    "/images/cloudy.gif", "/images/rain.gif", "/images/rain.gif", "/images/tstorm", "/images/snow.gif"
+                    "/images/cloudy.gif", "/images/rain.gif", "/images/rain.gif", "/images/tstorm",
+                    "/images/snow.gif", "/images/mostlycloudy.gif", "/images/fog.gif"
                 ];
 
                 var iconStates = ["clear", "mostlycloudy", "partlycloudy", "cloudy", "chancerain", "rain",
-                    "tstorm", "snow", "mostlysunny", "/images/mostlycloudy.gif"];
+                    "tstorm", "snow", "mostlysunny", "fog"];
 
 
                 console.log(theIcons);
@@ -145,6 +134,33 @@ jQuery(document).ready(function($) {
                 document.getElementById('wInsideTemp').innerHTML = parsed_json.fragment.site.temperature.inside.toFixed(1);
                 document.getElementById('wOutsideTemp').innerHTML = parsed_json.fragment.site.temperature.outside.toFixed(1);
 
+            },
+            error: function(err){
+                console.log(err);
+            }
+        });
+        $.ajax({
+            url: "http://localhost:8081/api/stocks",
+            success: function(parsed_json){
+
+                var tickerName;
+                var lastTradePrice;
+                var openPrice;
+                var percentageChange;
+                var count = 1;
+
+                for (var i = 0; i < parsed_json.length;i++){
+                    tickerName           = parsed_json[i].symbol;
+                    lastTradePrice      = parsed_json[i].lastTradePriceOnly;
+                    openPrice           = parsed_json[i].open;
+                    percentageChange    = parsed_json[i].changeInPercent * 100;
+
+                    document.getElementById("stockName" +count).innerHTML = tickerName;
+                    document.getElementById("stockLatest"+count).innerHTML = lastTradePrice;
+                    document.getElementById("stockOpen"+count).innerHTML = openPrice;
+                    document.getElementById("stockChange"+count).innerHTML = percentageChange.toFixed(1);
+                    count++;
+                }
             },
             error: function(err){
                 console.log(err);
