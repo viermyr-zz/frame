@@ -37,7 +37,6 @@
     <script src="../js/time-and-date.js"></script>
     <script src="../js/consumption-bar.js"></script>
     <script src="../server.js"></script>
-    <script src="../core.js"></script>
 
     <style>
 
@@ -459,7 +458,6 @@
     <script src="../js/bootstrap.min.js"></script>
 
 
-
     <script src="../js/custom.js"></script>
 
     <!-- flot js -->
@@ -513,101 +511,7 @@
                     .attr("transform", "translate(0, 175)")
                     .call(axis);
         </script>
-        <script>
-            var data = [
-                { x: 0, y: 15 },
-                { x: 1, y: 13 },
-                { x: 2, y: 12 },
-                { x: 3, y: 11 },
-                { x: 4, y: 8 },
-                { x: 5, y: 9 },
-                { x: 6, y: 12 },
-                { x: 7, y: 15 },
-                { x: 8, y: 20 },
-                { x: 9, y: 25 },
-                { x: 10, y: 21 },
-                { x: 11, y: 17 },
-                { x: 12, y: 15 },
-                { x: 13, y: 12 },
-                { x: 14, y: 11 },
-                { x: 15, y: 15 },
-                { x: 16, y: 21 },
-                { x: 17, y: 25 },
-                { x: 18, y: 28 },
-                { x: 19, y: 32 },
-                { x: 20, y: 31 },
-                { x: 21, y: 25 },
-                { x: 22, y: 21 },
-                { x: 23, y: 18 },
-                { x: 24, y: 16 }
 
-
-            ];
-
-            var margin = {top: 20, right: 20, bottom: 30, left: 50},
-                    width = 925 - margin.left - margin.right,
-                    height = 268 - margin.top - margin.bottom;
-
-            var xa = d3.scale.ordinal()
-                    .domain(["00:00", "01:00", "02:00", "03:00", "04:00", "05:00", "06:00", "07:00",
-                    "08:00", "09:00", "10:00", "11:00", "12:00", "13:00", "14:00", "15:00", "16:00",
-                    "17:00", "18:00", "19:00", "20:00", "21:00", "22:00", "23:00", "24:00"])
-                    .rangePoints([0, width]);
-
-
-            var x = d3.scale.linear()
-                    .domain([0, d3.max(data, function(d) { return d.x; })])
-                    .range([0, width]);
-
-            var y = d3.scale.linear()
-                    .domain([0, d3.max(data, function(d) { return d.y; })])
-                    .range([height, 0]);
-
-            var xAxis = d3.svg.axis()
-                    .scale(xa)
-                    .orient("bottom");
-
-            var yAxis = d3.svg.axis()
-                    .scale(y)
-                    .orient("left");
-
-            var area = d3.svg.area()
-                    .x(function(d) { return x(d.x); })
-                    .y0(height)
-                    .y1(function(d) { return y(d.y); });
-
-            var svg = d3.select("svg#area")
-                    .attr("width", width + margin.left + margin.right)
-                    .attr("height", height + margin.top + margin.bottom)
-                    .append("g")
-                    .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
-
-            svg.append("path")
-                    .datum(data)
-                    .attr("class", "area")
-                    .attr("d", area);
-
-            svg.append("g")
-                    .attr("class", "x axis")
-                    .attr("transform", "translate(0," + height + ")")
-                    .call(xAxis)
-                    .append("text")
-                    .attr("y", -12)
-                    .attr("x", 850)
-                    .attr("dy", ".71em")
-                    .style("text-anchor", "end")
-                    .text("Time (Hours)");
-
-            svg.append("g")
-                    .attr("class", "y axis")
-                    .call(yAxis)
-                    .append("text")
-                    .attr("transform", "rotate(-90)")
-                    .attr("y", 6)
-                    .attr("dy", ".71em")
-                    .style("text-anchor", "end")
-                    .text("Consumption (kw/h)");
-        </script>
     <!--   REMEMBER THIS SUCKER  -->
 
 

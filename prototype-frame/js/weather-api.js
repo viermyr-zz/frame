@@ -9,18 +9,18 @@ jQuery(document).ready(function($) {
                 // TODAYS WEATHER ********************************
                 // Location of the person
                 var location = parsed_json['location']['city'];
-                console.log(location);
+                //console.log(location);
                 // document.getElementById('wCity').innerHTML = location;
 
                 // The current temperature @ location
                 var temp_f = parsed_json['current_observation']['temp_f'];
-                console.log(temp_f);
+                //console.log(temp_f);
 
                 // Convert temperature from Fahrenheit to Celsius
                 var celsius = (temp_f - 32) * (5 / 9);
-                console.log(celsius);
+                //console.log(celsius);
                 celsius = celsius.toFixed(1);   // Only get 1 didget
-                console.log(celsius);
+                //console.log(celsius);
                 document.getElementById('wOutsideTemp').innerHTML = celsius.toString();
 
 

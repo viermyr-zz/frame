@@ -1,5 +1,5 @@
-var express         = require("express"),
-    app             = express();
+var express         = require("express");
+var app             = express();
 var mongoose        = require('mongoose');
 var morgan          = require('morgan');
 var bodyParser      = require('body-parser');
@@ -26,6 +26,11 @@ app.use(methodOverride());
 var Todo = mongoose.model('Todo', {
     text : String
 });
+
+var wattagePrHour = mongoose.model('wattagePrHour', {
+    wattage: String,
+    date: Date
+})
 // routes ======================================================================
 
 // api ---------------------------------------------------------------------
@@ -76,7 +81,7 @@ var stockQutes = function(ticker){
             symbol: ticker,
             fields: ['s', 'n', 'd2', 'l1', 'y', 'r']
         }, function(err, snapshot){
-            console.log(snapshot);
+            //console.log(snapshot);
         }
     );
 
@@ -142,6 +147,19 @@ app.delete('/api/todos/:todo_id', function(req, res) {
 });
 
 app.get("/api/weather/", function(reg, res){
+    getFuturehomeAPI(function(futurehomeJson){
+        res.json(futurehomeJson);
+    })
+})
+
+/*
+app.get('*', function (req, res) {
+    res.sendfile('./public/index.html'); // load the single view file (angular will
+                                         //  handle the page changes on the front-end)
+});
+*/
+
+var getFuturehomeAPI = function(callback){
     https.get({
         hostname: 'unstable.futurehome.no',
         port: 443,
@@ -156,6 +174,7 @@ app.get("/api/weather/", function(reg, res){
             data,
             route;
 
+
         result.on("data", function (chunk) {
             buffer += chunk;
         });
@@ -163,19 +182,43 @@ app.get("/api/weather/", function(reg, res){
         result.on("end", function (err) {
             // finished transferring data
             // dump the raw data
-            data = JSON.parse(buffer);
-            res.json(data);
 
+            data = JSON.parse(buffer);
+            callback(data);
         });
     });
-})
+    }
 
-/*
-app.get('*', function (req, res) {
-    res.sendfile('./public/index.html'); // load the single view file (angular will
-                                         //  handle the page changes on the front-end)
+var interval = setInterval(function() {
+
+
+    getFuturehomeAPI(function(futurehomeJson){
+        wattagePrHour.create({
+            date : Date.now(),
+            wattage: futurehomeJson.fragment.site.power.wattage
+        }, function(err, wattagePrHour) {
+            if (err)
+                res.send(err);
+            //console.log(wattagePrHour.date.getHours())
+        });
+    })
+
+}, 1000*60);
+
+app.get('/api/wattagePrHour/', function(req, res) {
+
+    // use mongoose to get all todos in the database
+    wattagePrHour.find(function(err, wattagePrHour) {
+
+        // if there is an error retrieving, send the error. nothing after res.send(err) will execute
+        if (err)
+            res.send(err);
+
+        res.json(wattagePrHour); // return all todos in JSON format
+    });
 });
-*/
+
+
 
 app.listen(port);
-console.log("App listening on port: "+  port);
+console.log("App listening on port: " +  port);
