@@ -123,7 +123,7 @@ app.get("/api/stocks/", function(req,res){
     );
 
 });
-/*
+
 app.get("/api/weather/", function(reg, res){
     getFuturehomeAPI(function(futurehomeJson){
         res.json(futurehomeJson);
@@ -147,7 +147,7 @@ var getFuturehomeAPI = function(callback){
             'Authorization': 'Bearer mWRuGZZc5U2Q8oHUIixwenL8craSMx14HxIWIkDJ',
             'Accept': 'application/json'
         }
-    }, function (result) {
+    }, function (result, id) {
         var buffer = "",
             data,
             route;
@@ -160,8 +160,11 @@ var getFuturehomeAPI = function(callback){
         result.on("end", function (err) {
             // finished transferring data
             // dump the raw data
+            console.log(result.statusCode);
+            if(result.statusCode != 200) return;
 
             data = JSON.parse(buffer);
+            if(data.fragment == undefined) return;
             callback(data);
         });
     });
@@ -177,7 +180,6 @@ var interval = setInterval(function() {
         }, function(err, wattagePrHour) {
             if (err)
                 res.send(err);
-            //console.log(wattagePrHour.date.getHours())
         });
     })
 
