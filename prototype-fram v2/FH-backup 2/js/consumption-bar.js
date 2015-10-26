@@ -56,18 +56,21 @@ jQuery(document).ready(function($) {
 
                     sum += parseInt(jsonData[i].wattage);
 
-                    console.log("Count:" + count + " Sum:" + sum)
-                    if (index != previous) {
 
-                        data[previous] = ({x: previous, y: sum / count});
+
+                    if (index != previous) {
+                        console.log("Count:" + count + " Sum:" + sum + "index: " + index)
+                        data[previous] = ({x: previous, y: ((sum / count) / 1000)* 3600}) ;
                         previous = index;
                         sum = 0;
-                        count = 0;
-                    }
-                    count++;
-                }
-                data[previous] = ({x: previous, y: sum / count});
+                        count = 1;
 
+                    } else {
+                        count++;
+                    }
+                }
+                data[previous] = ({x: previous, y: ((sum / count) / 1000)* 3600});
+                console.log(data)
                 callback(data);
             }
         });
@@ -85,7 +88,7 @@ jQuery(document).ready(function($) {
             y.domain([0, d3.max(data, function (d) {
 
                 if(d.y === 0) return 50;
-                return d.y;
+                return d.y * 2;
                 })]);
 
             var yAxis = d3.svg.axis()
@@ -137,7 +140,7 @@ jQuery(document).ready(function($) {
             getData(function(data){
                 y.domain([0, d3.max(data, function (d) {
                     if(d.y === 0) return 50;
-                    return d.y;
+                    return d.y * 2;
                 })]);
 
                 var yAxis = d3.svg.axis()

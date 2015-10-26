@@ -46,7 +46,7 @@ $(function(){
             success: function (parsed_json) {
                 futureHomeData = parsed_json;
                 $('#mainWeather').load('/public/weather.html');
-                console.log("inside other")
+
 
                 console.log(parsed_json.fragment.site.temperature.inside.toFixed(1));
                 //console.log(parsed_json.fragment.site.temperature.inside);
