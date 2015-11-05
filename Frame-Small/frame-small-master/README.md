@@ -1,0 +1,2 @@
+# frame-small
+Smaller dashboard

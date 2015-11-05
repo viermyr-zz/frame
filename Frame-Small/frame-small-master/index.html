@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Futurehome Dashboard</title>
+    
+    <!-- JAVASCRIPT PLUGINS, LIBRARYS AND FRAMEWORKS FROM CDN -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.0.2/jquery.min.js" type="text/javascript"></script>
+    <script src="assets/js/jquery.gridly.js" type="text/javascript"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+    
+    <!-- JAVASCRIPT PLUGINS, LIBRARYS AND FRAMEWORKS FROM LOCAL -->
+    <script type="text/javascript" src="assets/js/chart.min.js"></script>
+    
+
+    <!-- CSS LIBRARYS AND FRAMEWORKS FROM CDN -->
+    <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    
+    <!-- CSS LIBRARYS AND FRAMEWORKS FROM LOCAL -->
+    <link rel="stylesheet" type="text/css" href="assets/css/jquery.gridly.css"/>
+    <link rel="stylesheet" type="text/css" href="assets/css/custom.css">
+
+</head>
+<body>
+<div class="gridly">
+    <div class="brick header">
+        <span id="Date"></span>
+
+        <img id="fh-logo" src="assets/img/logo_B_transp_2Kpx.png">
+
+        <span id="time">
+            <span id="hours"></span>
+            <span>:</span>
+            <span id="min"></span>
+            <span>:</span>
+            <span id="sec"></span>
+        </span>
+    </div>
+        
+    <div class="brick small">
+       
+    </div>
+
+    <div class="brick long">
+        <div class="dashboard-header">
+            <p>POWER CONSUMPTION</p>
+        </div>
+        <canvas id="buyers"></canvas>  
+    </div>
+    
+    
+    <div class="brick large">
+        <div class="dashboard-header">
+            WEATHER REPORT
+        </div>
+        
+
+
+<div class="col-sm-4">
+    <div class="weather-icon">
+        <div align="center">
+            <img style="max-width:100%;max-height:100%;" id="iconTest" src="/images/cloudy5.png"></div>
+    </div>
+</div>
+
+<div class="col-sm-4" style="border-left: 2px solid #CCD4DB;">
+    <div class="weather-text">
+        <h2 style="line-height: 150%; font-weight: bold; font-size: 24px;" align="center">Outside</h2>
+        <h3 style="line-height: 120%;" class="degrees" id="wOutsideTemp">6.1</h3>
+    </div>
+</div>
+
+<div class="col-sm-4" style="border-left: 2px solid #CCD4DB;">
+    <div class="weather-text">
+        <h2 style="line-height: 150%; font-weight: bold; font-size: 24px;" align="center">Inside</h2>
+        <h3 style="line-height: 120%;" class="degrees" id="wInsideTemp"></h3>
+    </div>
+</div>
+
+
+    <div class="brick small">
+        <div class="dashboard-header">
+            <p>CONNECTED DEVICES</p>
+        </div>
+        <canvas id="devices"></canvas>
+    </div>
+    <div class="brick verysmall">asd</div>
+    <div class="brick verysmall">asd</div>
+    <div class="brick verysmall">asd</div>
+    <div class="brick verysmall">asd</div>
+    <div class="brick verysmall">asd</div>
+    <div class="brick verysmall">asd</div>
+</div>
+
+
+
+<!-- JAVASCRIPT CUSTOM FILES FROM LOCAL -->
+<script type="text/javascript" src="assets/js/gridly.js"></script>
+<script type="text/javascript" src="assets/js/chart.min.js"></script>
+<script type="text/javascript" src="assets/js/charts.js"></script>
+<script type="text/javascript" src="assets/js/clock.js"></script>
+<script type="text/javascript" src="assets/js/weather-api.js"></script>
+
+
+</body>
+</html>

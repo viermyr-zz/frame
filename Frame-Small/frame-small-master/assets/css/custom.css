@@ -1,0 +1,114 @@
+.gridly {
+  position: relative;
+  width: 960px;
+  background-color: #101214;
+}
+
+.brick.header {
+  width:97.9%;
+  height: 30px;
+  margin: auto 0;
+  position: absolute;
+  margin-top:8px;
+  text-align: center;
+  overflow: hidden
+}
+
+.brick.small {
+  width: 140px;
+  height: 140px;
+}
+
+.brick.large {
+  width: 300px;
+  height: 300px;
+}
+
+.brick.long {
+  width: 460px;
+  height: 300px;
+}
+
+.brick.verysmall {
+  width: 70px;
+  height: 70px;
+}
+
+.brick {
+  background-color: #2A2A2A;
+  -webkit-box-shadow: 0px 0px 1px 1px rgba(42,42,42,1);
+  -moz-box-shadow: 0px 0px 1px 1px rgba(42,42,42,1);
+  box-shadow: 0px 0px 1px 1px rgba(42,42,42,1);
+}
+
+.dashboard-header{
+  display: inline-block;
+  height: 22px;
+  width: 100%;
+  color: #616366;
+  /* background-color: #232526; */
+  background-color: #272727;
+  /* overflow: hidden; */
+  white-space: nowrap;
+  text-align: center;
+  vertical-align: middle;
+  padding-top: 3px;
+  font-size: 1.1em;
+}
+
+
+
+#fh-logo {
+  float:left;
+  margin-left:175px; 
+  height:30px;
+
+}
+
+/* CHARTS */
+#buyers {
+  width:100%; 
+  height:100%; 
+  padding: 5px 5px 25px 5px;
+}
+
+#income {
+  width:100%; 
+  height:100%; 
+  padding: 5px 5px 25px 5px;
+}
+
+#devices {
+  width:100%; 
+  height:90%; 
+  padding: 10px 10px 20px 10px;
+}
+
+#time {
+  color:white;
+  padding:3px 10px 0px 0px;
+  font-size: 1.2em; 
+  float:right
+}
+
+#Date {
+  color:white;
+  padding:3px 0 0 10px;
+  font-size: 1.2em; 
+  float:left
+}
+
+
+/* If you want you can use font-face */
+@font-face {
+    font-family: 'BebasNeueRegular';
+    src: url('BebasNeue-webfont.eot');
+    src: url('BebasNeue-webfont.eot?#iefix') format('embedded-opentype'),
+         url('BebasNeue-webfont.woff') format('woff'),
+         url('BebasNeue-webfont.ttf') format('truetype'),
+         url('BebasNeue-webfont.svg#BebasNeueRegular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+
