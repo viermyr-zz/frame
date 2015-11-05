@@ -132,6 +132,12 @@ app.get("/api/weather/", function(reg, res){
     })
 });
 
+app.get("/api/deviceInfo/", function(reg, res){
+    getFuturehomeAPI(function(futurehomeJson){
+        res.json(futurehomeJson);
+    })
+});
+
 var getFuturehomeAPI = function(callback){
 
     https.get({

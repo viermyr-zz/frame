@@ -47,13 +47,8 @@ $(function(){
                 futureHomeData = parsed_json;
                 $('#mainWeather').load('/public/weather.html');
 
-
                 console.log(parsed_json.fragment.site.temperature.inside.toFixed(1));
                 //console.log(parsed_json.fragment.site.temperature.inside);
-
-
-
-
             },
             error: function(err){
                 console.log(err);
