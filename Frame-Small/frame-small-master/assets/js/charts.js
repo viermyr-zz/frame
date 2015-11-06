@@ -1,5 +1,3 @@
-
-
 function getData(callback) {
     $.ajax({
         url: "http://localhost:8082/api/wattagePrHour/",
@@ -55,36 +53,6 @@ function getData(callback) {
     });
 }
 
-<<<<<<< HEAD
-getData(function(data, previousData){
-    var buyerData = {
-        labels : ["00:00", "02:00", "04:00", "06:00",
-            "08:00", "10:00", "12:00", "14:00", "16:00",
-            "18:00", "20:00", "22:00", "24:00"],
-        datasets : [
-            {
-                fillColor : "rgba(172,194,132,0.4)",
-                strokeColor : "#ACC26D",
-                pointColor : "#fff",
-                pointStrokeColor : "#9DB86D",
-                data : data
-            },
-            {
-                fillColor: "rgba(200,50,50,0.4)",
-                strokeColor: "#B1C26D",
-                pointColor: "#0ff",
-                pointStrokeColor: "#9DB86D",
-                data: previousData
-            }
-
-
-
-        ]
-    };
-
-    var buyers = document.getElementById('buyers').getContext('2d');
-    new Chart(buyers).Line(buyerData);
-=======
 GenerateChart();
 function GenerateChart(){
     getData(function(data, previousData) {
@@ -107,8 +75,6 @@ function GenerateChart(){
                     pointStrokeColor: "#9DB86D",
                     data: previousData
                 }
->>>>>>> eb68ca83db932eedc8121946a51f284a47e656b4
-
 
             ]
         };
