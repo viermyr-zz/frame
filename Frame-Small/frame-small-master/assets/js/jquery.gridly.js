@@ -68,6 +68,7 @@ Copyright 2015 Kevin Sylvestre
       this.toggle();
     }
 
+
     Draggable.prototype.bind = function(method) {
       if (method == null) {
         method = 'on';
@@ -80,9 +81,7 @@ Copyright 2015 Kevin Sylvestre
       if (method == null) {
         method = 'on';
       }
-      this.$container[method]('mousedown touchstart', this.selector, this.began);
-      this.$container[method]('touchend', this.selector, this.touchend);
-      return this.$container[method]('click', this.selector, this.click);
+      
     };
 
     Draggable.prototype.on = function() {
