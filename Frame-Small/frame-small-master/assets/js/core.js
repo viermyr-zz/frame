@@ -1,8 +1,7 @@
 // public/core.js
-var scotchTodo = angular.module('scotchTodo', []);
+var mainApp = angular.module('mainApp', []);
 
 function mainController($scope, $http) {
-    var counter = 0;
     $scope.formData = {};
 
     // when landing on the page, get all todos and show them
@@ -18,11 +17,7 @@ function mainController($scope, $http) {
 
     // when submitting the add form, send the text to the node API
     $scope.createTodo = function() {
-        if(counter > 3){
-            alert("no more space");
-        } 
-        else
-        {
+       
         var insertedTodo = document.getElementById("todo-item").value;
           if(insertedTodo == ""){
             alert("Please enter an Item");
@@ -42,11 +37,8 @@ function mainController($scope, $http) {
                 })
                 .error(function (data) {
                     console.log('Error: ' + data);
-                });
-            }
-        counter++;
-        console.log(counter);
-        }    
+            });
+        }  
     };
 
     // delete a todo after checking it
@@ -55,7 +47,6 @@ function mainController($scope, $http) {
             .success(function(data) {
                 $scope.todos = data;
                 console.log(data);
-                counter--;
             })
             .error(function(data) {
                 console.log('Error: ' + data);

@@ -22,13 +22,11 @@
     <link rel="stylesheet" type="text/css" href="assets/css/custom.css">
 
 </head>
-<body ng-app="scotchTodo" ng-controller="mainController">
+<body ng-app="mainApp" ng-controller="mainController">
 <div class="gridly">
     <div class="brick header">
         <span id="Date"></span>
-
         <img id="fh-logo" src="assets/img/logo_B_transp_2Kpx.png">
-
         <span id="time">
             <span id="hours"></span>
             <span>:</span>
@@ -46,7 +44,7 @@
         <!-- 2DO LIST -->
         <div id="todo-list" style=" height:100px; overflow: auto;">
                 <!-- LOOP OVER THE TODOS IN $scope.todos -->
-                <div style="color:white; padding-left:5px;white-space:nowrap; overflow:hidden;margin-right:8px;" class="checkbox" ng-repeat="todo in todos">
+                <div id="testbox" style="color:white; padding-left:5px;white-space:nowrap; overflow:hidden;margin-right:8px;" class="checkbox" ng-repeat="todo in todos">
                     <label>
                         <input style="color:white;" type="checkbox" ng-click="deleteTodo(todo._id)"> {{ todo.text }}
                     </label>
