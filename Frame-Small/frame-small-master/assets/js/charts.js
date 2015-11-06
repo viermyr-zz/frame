@@ -3,11 +3,11 @@ function getData(callback) {
         url: "http://localhost:8082/api/wattagePrHour/",
         success: function (jsonData) {
 
-            var currentDaydata = [];
+            var currentDayData = [];
             var previousDayData = [];
 
             var date = new Date();
-            fillData(currentDaydata, date, function(data){
+            fillData(currentDayData, date, function(data){
                 date.setDate(date.getDate() - 1);
                 fillData(previousDayData, date, function(previousData){
                     callback(data, previousData);
@@ -29,13 +29,12 @@ function getData(callback) {
                     if( new Date(jsonData[i].date).getDate() != today.getDate()) continue;
                     if (jsonData[i].wattage == null) continue;
 
-                    var index = new Date(jsonData[i].date).getHours() - 1;
-
+                    var index = new Date(jsonData[i].date).getUTCHours();
                     if (index === -1) continue;
 
                     if (index != previous) {
-                        console.log("Count:" + count + " Sum:" + sum + "index: " + index)
-                        data[previous] = ((sum / count) / 1000)* 3600 ;
+                        //console.log("Count:" + count + " Sum:" + sum + "index: " + index)
+                        data[previous] = ((sum / count) / 1000) * 3600 ;
                         previous = index;
                         sum = 0;
                         count = 1;
@@ -45,7 +44,7 @@ function getData(callback) {
                     sum += parseInt(jsonData[i].wattage);
                 }
                 data[previous] = ( ((sum / count) / 1000)* 3600);
-                console.log("This is THE data your looking for: " + data)
+                console.log("This is THE data your looking for: " + previous);
                 callback(data);
             }
 
@@ -53,9 +52,17 @@ function getData(callback) {
     });
 }
 
+
+setInterval(GenerateChart, 1000);
 GenerateChart();
 function GenerateChart(){
     getData(function(data, previousData) {
+
+
+        window.chartOptions = {
+            animation: false
+        };
+
         var buyerData = {
             labels: ["00:00", "01:00", "02:00", "03:00", "04:00", "05:00", "06:00", "07:00",
                 "08:00", "09:00", "10:00", "11:00", "12:00", "13:00", "14:00", "15:00", "16:00",
@@ -80,7 +87,7 @@ function GenerateChart(){
         };
 
         var buyers = document.getElementById('buyers').getContext('2d');
-        lineChart = new Chart(buyers).Line(buyerData);
+        lineChart = new Chart(buyers).Line(buyerData, window.chartOptions);
 
     })
 }
