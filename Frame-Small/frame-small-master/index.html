@@ -46,7 +46,7 @@
                 <!-- LOOP OVER THE TODOS IN $scope.todos -->
                 <div id="testbox" style="color:white; padding-left:5px;white-space:nowrap; overflow:hidden;margin-right:8px;" class="checkbox" ng-repeat="todo in todos">
                     <label>
-                        <input style="color:white;" type="checkbox" ng-click="deleteTodo(todo._id)"> {{ todo.text }}
+                        <input style="color:white;" type="checkbox"  ng-click="deleteTodo(todo._id)"> {{ todo.text }}
                     </label>
                 </div>
         </div>
@@ -54,7 +54,11 @@
 
     <div class="brick long">
         <div class="dashboard-header">
-            POWER CONSUMPTION
+            POWER CONSUMPTION 
+            <span align="center" class="btn-primary period-btn">Year</span>
+            <span align="center" class="btn-primary period-btn">Month</span>
+            <span align="center" class="btn-primary period-btn">Week</span>
+            <span align="center" class="btn-primary period-btn">Day</span>
         </div>
         <canvas id="buyers"></canvas>  
     </div>
