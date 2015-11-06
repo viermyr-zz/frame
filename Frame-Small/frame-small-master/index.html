@@ -58,16 +58,16 @@
 
             <div class="btn-group" data-toggle="buttons" style="float:right; height:25px;">
                 <label class="btn btn-primary active" style="height:25px;vertical-align: middle;">
-                    <input type="radio" name="options" style="margin-bottom:50px;" id="option1" autocomplete="off" checked> Day
+                    <input type="radio" name="options" style="margin-bottom:50px;" id="option1" autocomplete="off" checked onchange="GenerateChart(0)"> Day
                 </label>
                 <label class="btn btn-primary" style="height:25px">
                     <input type="radio" style="text-align: center; vertical-align:middle;" name="options" id="option2" autocomplete="off"> Week
                 </label>
                 <label class="btn btn-primary" style="height:25px;">
-                    <input type="radio" name="options" id="option3" autocomplete="off"> Month
+                    <input type="radio" name="options" id="option3" autocomplete="off" onchange="GenerateChart(1)"> Month
                 </label>
                 <label class="btn btn-primary" style="height:25px;">
-                    <input type="radio" name="options" id="option3" autocomplete="off"> Year
+                    <input type="radio" name="options" id="option4" autocomplete="off" onchange="GenerateChart(2)"> Year
                 </label>
             </div>
        <!--     <span align="center" class="btn-primary period-btn">Year</span>

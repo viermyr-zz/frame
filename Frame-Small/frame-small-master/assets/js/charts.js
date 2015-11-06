@@ -184,11 +184,15 @@ function getDayData(callback) {
 }
 
 setInterval(GenerateChart, 10000);
-GenerateChart();
-function GenerateChart(){
+GenerateChart(0);
 
-    var chartState = 1;
+var chartState;
+function GenerateChart(chartType){
 
+
+    if(chartType != null) {
+        chartState = chartType;
+    }
 
     var labels = [];
 //Days
@@ -332,9 +336,9 @@ var pieData = [
     }
 ]
 
-var devices = document.getElementById("devices").getContext("2d");
+//var devices = document.getElementById("devices").getContext("2d");
 
-new Chart(devices).Doughnut(pieData);
+//new Chart(devices).Doughnut(pieData);
 
 
 
