@@ -46,14 +46,14 @@
 
 .dashboard-header{
   display: inline-block;
-  height: 29px;
+  height: 30px;
   width: 100%;
   color: #616366;
   /* background-color: #232526; */
   background-color: #272727;
   /* overflow: hidden; */
   white-space: nowrap;
-  text-align: center;
+  padding-left: 8px; 
   vertical-align: middle;
   padding-top: 3px;
   font-size: 1.2em;
@@ -75,6 +75,18 @@
   margin-right:3px;
 }
 
+.period-btn {
+  text-align: center;
+  vertical-align: middle;
+  font-size: 14px;
+  float: right; 
+  width:50px; 
+  height:20px; 
+  border-radius:3px;
+  cursor:pointer; 
+  margin-right:5px;
+}
+
 .testbox::-webkit-scrollbar {
  display: none;
 }
@@ -84,9 +96,9 @@
 }
 
 .weather-icon div img {
-  max-width:100%;
-  max-height:100%;
-  padding: 10px 0 0 10px; 
+  max-width:120%;
+  max-height:120%;
+  padding: 5px 0 0 0;
 }
 
 
@@ -172,5 +184,6 @@ h3.degrees {
     font-weight: normal;
     font-style: normal;
 }
+
 
 
