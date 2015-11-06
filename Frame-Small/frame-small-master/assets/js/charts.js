@@ -53,9 +53,17 @@ function getData(callback) {
     });
 }
 
+
+setInterval(GenerateChart, 1000);
 GenerateChart();
 function GenerateChart(){
     getData(function(data, previousData) {
+
+
+        window.chartOptions = {
+            animation: false
+        };
+
         var buyerData = {
             labels: ["00:00", "01:00", "02:00", "03:00", "04:00", "05:00", "06:00", "07:00",
                 "08:00", "09:00", "10:00", "11:00", "12:00", "13:00", "14:00", "15:00", "16:00",
@@ -80,7 +88,7 @@ function GenerateChart(){
         };
 
         var buyers = document.getElementById('buyers').getContext('2d');
-        lineChart = new Chart(buyers).Line(buyerData);
+        lineChart = new Chart(buyers).Line(buyerData, window.chartOptions);
 
     })
 }

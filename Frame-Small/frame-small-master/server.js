@@ -103,8 +103,8 @@ app.post('/api/todos', function(req, res) {
 
 // delete a 2do
 app.delete('/api/todos/:todo_id', function(req, res) {
+    lol();
 
-    
     Todo.remove({
         _id : req.params.todo_id
     }, function(err, todo) {
