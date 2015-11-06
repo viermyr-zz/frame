@@ -55,10 +55,26 @@
     <div class="brick long">
         <div class="dashboard-header">
             POWER CONSUMPTION 
-            <span align="center" class="btn-primary period-btn">Year</span>
+
+            <div class="btn-group" data-toggle="buttons" style="float:right; height:25px;">
+                <label class="btn btn-primary active" style="height:25px;vertical-align: middle;">
+                    <input type="radio" name="options" style="margin-bottom:50px;" id="option1" autocomplete="off" checked> Day
+                </label>
+                <label class="btn btn-primary" style="height:25px">
+                    <input type="radio" style="text-align: center; vertical-align:middle;" name="options" id="option2" autocomplete="off"> Week
+                </label>
+                <label class="btn btn-primary" style="height:25px;">
+                    <input type="radio" name="options" id="option3" autocomplete="off"> Month
+                </label>
+                <label class="btn btn-primary" style="height:25px;">
+                    <input type="radio" name="options" id="option3" autocomplete="off"> Year
+                </label>
+            </div>
+       <!--     <span align="center" class="btn-primary period-btn">Year</span>
             <span align="center" class="btn-primary period-btn">Month</span>
             <span align="center" class="btn-primary period-btn">Week</span>
             <span align="center" class="btn-primary period-btn">Day</span>
+            -->
         </div>
         <canvas id="buyers"></canvas>  
     </div>
@@ -94,7 +110,7 @@
 
 
         <div class="row weather-days">
-            <div class="col-sm-4 ">
+            <div class="col-sm-4">
                 <div class="daily-weather">
                     <h2 class="day" id="day1-txt"></h2>
                     <h1 align="center">
@@ -104,7 +120,7 @@
                     
                 </div>
             </div>
-            <div class="col-sm-4 weather-border">
+            <div class="col-sm-4">
                 <div class="daily-weather">
                     <h2 class="day" id="day2-txt"></h2>
                     <h1 align="center">
@@ -114,7 +130,7 @@
                     
                 </div>
             </div>
-            <div class="col-sm-4 weather-border">
+            <div class="col-sm-4">
                 <div class="daily-weather">
                     <h2 class="day" id="day3-txt"></h2>
                     <h1 align="center">
@@ -131,18 +147,21 @@
     </div>
     <div class="brick small">
         <div class="dashboard-header">
-            <p>DEVICES</p>
+            <p>STATISTICS</p>
         </div>
-        <canvas id="devices"></canvas>
-    </div>
-    <div class="brick verysmall">asd</div>
-    <div class="brick verysmall">asd</div>
-    <div class="brick verysmall">asd</div>
-    <div class="brick verysmall">asd</div>
-    <div class="brick verysmall">asd</div>
-    <div class="brick verysmall">asd</div>
-</div>
+        <div style="color:white;">
+            # Devices:
+            <br>
+            Daily kwh:
+            <br>
+            Avg kwh/h:
 
+
+        </div>
+
+
+    </div>
+</div>
 
 
 <!-- Modal2 -->
