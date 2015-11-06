@@ -25,31 +25,18 @@ app.use(bodyParser.json({ type: 'application/vnd.api+json' })); // parse applica
 app.use(methodOverride());
 
 
+var Todo = mongoose.model('Todo', {
+    text : String
+});
 
 var wattagePrHour = mongoose.model('wattagePrHour', {
     wattage: String,
     date: Date
 })
-/*
+
 // routes ======================================================================
 
-var Random = Math.random();
-//TEMP
-function lol() {
-    for (var i = 0; i < 100; i++) {
-        var today = new Date();
-        today.setHours(Math.floor(Math.random() * 24));
-        wattagePrHour.create({
-            date: today,
-            wattage: Math.floor(Math.random() * 200+ 50)
-        }, function (err, wattagePrHour) {
-            if (err)
-                res.send(err);
-        });
-    }
-}
 
-*/
 // api ---------------------------------------------------------------------
 
 app.get('/', function (req, res) {
@@ -62,88 +49,58 @@ app.get('/', function (req, res) {
 // routes ======================================================================
 
 // api ---------------------------------------------------------------------
-/*
 
-app.get("/api/stocks/", function(req,res){
-    yahooFinance.snapshot({
-            symbols: ['AAPL', 'MSFT', 'GOOG', 'AMZN', 'TWTR', 'TSLA', 'EBAY', 'BIDU', 'SCTY'],
-            fields: ['s', 'n', 'd2', 'l1', 'o', 'p2']
-        }, function(err, snapshot){
-            res.json(snapshot);
-        }
-    );
-
-});
-*/
-/*
-
-app.get("/api/weather/", function(reg, res){
-    getFuturehomeAPI(function(futurehomeJson){
-        res.json(futurehomeJson);
-    })
-});
-
-var getFuturehomeAPI = function(callback){
-
-    https.get({
-        hostname: 'unstable.futurehome.no',
-        port: 443,
-        path: '/api/v2/sites/B6088F84-DAB6-420D-B89C-828489DD199A/fragments/xs',
-        agent: false,  // create a new agent just for this one request
-        headers: {
-            'Authorization': 'Bearer mWRuGZZc5U2Q8oHUIixwenL8craSMx14HxIWIkDJ',
-            'Accept': 'application/json'
-        }
-    }, function (result, id) {
-        var buffer = "",
-            data,
-            route;
-
-
-        result.on("data", function (chunk) {
-            buffer += chunk;
-        });
-
-        result.on("end", function (err) {
-            // finished transferring data
-            // dump the raw data
-            console.log(result.statusCode);
-            if(result.statusCode != 200) return;
-
-            data = JSON.parse(buffer);
-            callback(data);
-        });
-    });
-}
-/*
-var interval = setInterval(function() {
-
-    getFuturehomeAPI(function(futurehomeJson){
-        wattagePrHour.create({
-            date : Date.now(),
-            wattage: futurehomeJson.fragment.site.power.wattage
-        }, function(err, wattagePrHour) {
-            if (err)
-                res.send(err);
-        });
-    })
-
-}, 1000*60);
-
-app.get('/api/wattagePrHour/', function(req, res) {
+app.get('/api/todos', function(req, res) {
 
     // use mongoose to get all todos in the database
-    wattagePrHour.find(function(err, wattagePrHour) {
+    Todo.find(function(err, todos) {
 
         // if there is an error retrieving, send the error. nothing after res.send(err) will execute
         if (err)
             res.send(err);
 
-        res.json(wattagePrHour); // return all todos in JSON format
+        res.json(todos); // return all todos in JSON format
     });
 });
 
-*/
+// create 2do and send back all todos after creation
+app.post('/api/todos', function(req, res) {
+
+    // create a 2do, information comes from AJAX request from Angular
+    Todo.create({
+        text : req.body.text,
+        done : false
+    }, function(err, todo) {
+        if (err)
+            res.send(err);
+
+        // get and return all the todos after you create another
+        Todo.find(function(err, todos) {
+            if (err)
+                res.send(err);
+            res.json(todos);
+        });
+    });
+
+});
+
+// delete a 2do
+app.delete('/api/todos/:todo_id', function(req, res) {
+    Todo.remove({
+        _id : req.params.todo_id
+    }, function(err, todo) {
+        if (err)
+            res.send(err);
+
+        // get and return all the todos after you create another
+        Todo.find(function(err, todos) {
+            if (err)
+                res.send(err);
+            res.json(todos);
+        });
+    });
+});
+
 
 app.get("/api/weather/", function(reg, res){
     getFuturehomeAPI(function(futurehomeJson){

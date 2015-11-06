@@ -2,8 +2,8 @@
 $(function(){
     //getLocation();
     console.log("before ajax call");
-    setTimeout(function() { weatherFun(); }, 5000);
-
+    //setTimeout(function() { weatherFun(); }, 5000);
+    weatherFun();
     var futureHomeData;
     function weatherFun(){
         $.ajax({

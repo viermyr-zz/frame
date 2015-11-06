@@ -173,7 +173,7 @@ Copyright 2015 Kevin Sylvestre
 
   Gridly = (function() {
     Gridly.settings = {
-      base: 60,
+      base: 50,
       gutter: 20,
       columns: 12,
       draggable: {
