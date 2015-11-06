@@ -3,11 +3,11 @@ function getData(callback) {
         url: "http://localhost:8082/api/wattagePrHour/",
         success: function (jsonData) {
 
-            var currentDaydata = [];
+            var currentDayData = [];
             var previousDayData = [];
 
             var date = new Date();
-            fillData(currentDaydata, date, function(data){
+            fillData(currentDayData, date, function(data){
                 date.setDate(date.getDate() - 1);
                 fillData(previousDayData, date, function(previousData){
                     callback(data, previousData);
@@ -29,13 +29,12 @@ function getData(callback) {
                     if( new Date(jsonData[i].date).getDate() != today.getDate()) continue;
                     if (jsonData[i].wattage == null) continue;
 
-                    var index = new Date(jsonData[i].date).getHours() - 1;
-
+                    var index = new Date(jsonData[i].date).getUTCHours();
                     if (index === -1) continue;
 
                     if (index != previous) {
-                        console.log("Count:" + count + " Sum:" + sum + "index: " + index)
-                        data[previous] = ((sum / count) / 1000)* 3600 ;
+                        //console.log("Count:" + count + " Sum:" + sum + "index: " + index)
+                        data[previous] = ((sum / count) / 1000) * 3600 ;
                         previous = index;
                         sum = 0;
                         count = 1;
@@ -45,7 +44,7 @@ function getData(callback) {
                     sum += parseInt(jsonData[i].wattage);
                 }
                 data[previous] = ( ((sum / count) / 1000)* 3600);
-                console.log("This is THE data your looking for: " + data)
+                console.log("This is THE data your looking for: " + previous);
                 callback(data);
             }
 
