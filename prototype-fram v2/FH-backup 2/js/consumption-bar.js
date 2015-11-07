@@ -40,45 +40,59 @@ jQuery(document).ready(function($) {
             url: "http://localhost:8082/api/wattagePrHour/",
             success: function (jsonData) {
 
-                var data = [];
-                for (var j = 0; j < 24; j++) {
-                    data.push({x: j, y: 0});
-                }
+                var currentDaydata = [];
+                var previousDayData = [];
 
-                var previous = 0;
-                var count = 1;
-                var sum = 0;
-                for (var i = 0; i < jsonData.length; i++) {
+                var date = new Date();
+                fillData(currentDaydata, date, function(data){
+                    date.setDate(date.getDate() - 1);
+                    fillData(previousDayData, date, function(previousData){
+                        callback(data, previousData);
+                    })
+                });
 
-                    var index = new Date(jsonData[i].date).getHours();
-
-                    if (index === -1) continue;
-
-                    sum += parseInt(jsonData[i].wattage);
-
-
-
-                    if (index != previous) {
-                        console.log("Count:" + count + " Sum:" + sum + "index: " + index)
-                        data[previous] = ({x: previous, y: ((sum / count) / 1000)* 3600}) ;
-                        previous = index;
-                        sum = 0;
-                        count = 1;
-
-                    } else {
-                        count++;
+                function fillData(data, date, callback){
+                    for (var j = 0; j < 24; j++) {
+                        data.push({x: j, y: 0});
                     }
+
+                    var previous = 0;
+                    var count = 1;
+                    var sum = 0;
+                    var today = date;
+                    for (var i = 0; i < jsonData.length; i++) {
+
+                        if(new Date(jsonData[i].date).getDate() != today.getDate())continue;
+                        if (jsonData[i].wattage == null) continue;
+
+                        var index = new Date(jsonData[i].date).getHours();
+
+                        if (index === -1) continue;
+                        sum += parseInt(jsonData[i].wattage);
+
+                        if (index != previous) {
+                            console.log("Count:" + count + " Sum:" + sum + "index: " + index)
+                            data[previous] = ({x: previous, y: ((sum / count) / 1000)* 3600}) ;
+                            previous = index;
+                            sum = 0;
+                            count = 1;
+
+                        } else {
+                            count++;
+                        }
+                    }
+                    data[previous] = ({x: previous, y: ((sum / count) / 1000)* 3600});
+                    console.log(data)
+                    callback(data);
                 }
-                data[previous] = ({x: previous, y: ((sum / count) / 1000)* 3600});
-                console.log(data)
-                callback(data);
+
             }
         });
     }
 
     function initRender() {
 
-        getData(function (data) {
+        getData(function (data, previousData) {
             x = d3.scale.linear()
                 .domain([0, d3.max(data, function (d) {
                     return d.x;
@@ -86,10 +100,15 @@ jQuery(document).ready(function($) {
                 .range([0, width]);
 
             y.domain([0, d3.max(data, function (d) {
-
-                if(d.y === 0) return 50;
-                return d.y * 2;
-                })]);
+                if(d.y === 0){
+                    return d3.max(previousData, function(d2){
+                        if(d2.y === 0) return 50;
+                        return d2.y * 1.5;
+                    })
+                }else {
+                    return d.y * 1.5;
+                }
+            })]);
 
             var yAxis = d3.svg.axis()
                 .scale(y)
@@ -104,12 +123,18 @@ jQuery(document).ready(function($) {
                     return y(d.y);
                 });
 
-
+            svg.append("path")
+                .datum(previousData)
+                .style("fill", "red")
+                .attr("class", "area")
+                .attr("d", area);
 
             svg.append("path")
                 .datum(data)
                 .attr("class", "area")
                 .attr("d", area);
+
+
 
             svg.append("g")
                 .attr("class", "x axis")
@@ -135,39 +160,49 @@ jQuery(document).ready(function($) {
         })
     }
 
-        function renderUpdate(){
+    function renderUpdate(){
 
-            getData(function(data){
-                y.domain([0, d3.max(data, function (d) {
-                    if(d.y === 0) return 50;
-                    return d.y * 2;
-                })]);
-
-                var yAxis = d3.svg.axis()
-                    .scale(y)
-                    .orient("left");
-
-                svg.selectAll(".y.axis").remove();
-
-                svg.append("g").attr("class","y axis").call(yAxis);
-
-                svg.selectAll(".area").remove();
-
-                var area = d3.svg.area()
-                    .x(function (d) {
-                        return x(d.x);
+        getData(function(data, previousData){
+            y.domain([0, d3.max(data, function (d) {
+                if(d.y === 0){
+                    return d3.max(previousData, function(d2){
+                        if(d2.y === 0) return 50;
+                        return d2.y * 1.5;
                     })
-                    .y0(height)
-                    .y1(function (d) {
-                        return y(d.y);
-                    });
-                svg.append("path")
-                    .datum(data)
-                    .attr("class", "area")
-                    .attr("d", area);
-            })
+                }
+                return d.y * 1.5;
+            })]);
 
+            var yAxis = d3.svg.axis()
+                .scale(y)
+                .orient("left");
 
-        }
+            svg.selectAll(".y.axis").remove();
+
+            svg.append("g").attr("class","y axis").call(yAxis);
+
+            svg.selectAll(".area").remove();
+
+            var area = d3.svg.area()
+                .x(function (d) {
+                    return x(d.x);
+                })
+                .y0(height)
+                .y1(function (d) {
+                    return y(d.y);
+                });
+
+            svg.append("path")
+                .datum(previousData)
+                .style("fill", "red")
+                .attr("class", "area")
+                .attr("d", area);
+
+            svg.append("path")
+                .datum(data)
+                .attr("class", "area")
+                .attr("d", area);
+        })
+    }
 });
 

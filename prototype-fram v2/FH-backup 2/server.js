@@ -34,6 +34,21 @@ var wattagePrHour = mongoose.model('wattagePrHour', {
 
 // routes ======================================================================
 
+var Random = Math.random();
+//TEMP
+function lol() {
+    for (var i = 0; i < 100; i++) {
+        var today = new Date();
+        today.setHours(Math.floor(Math.random() * 24));
+        wattagePrHour.create({
+            date: today,
+            wattage: Math.floor(Math.random() * 200+ 50)
+        }, function (err, wattagePrHour) {
+            if (err)
+                res.send(err);
+        });
+    }
+}
 // api ---------------------------------------------------------------------
 
 app.get('/', function (req, res) {
@@ -83,6 +98,7 @@ app.post('/api/todos', function(req, res) {
 
 // delete a 2do
 app.delete('/api/todos/:todo_id', function(req, res) {
+    lol();
     Todo.remove({
         _id : req.params.todo_id
     }, function(err, todo) {
