@@ -56,7 +56,7 @@ jQuery(document).ready(function($) {
                         data.push({x: j, y: 0});
                     }
 
-                    var previous = 0;
+                    var previous = -1;
                     var count = 1;
                     var sum = 0;
                     var today = date;
@@ -68,11 +68,11 @@ jQuery(document).ready(function($) {
                         var index = new Date(jsonData[i].date).getHours();
 
                         if (index === -1) continue;
-                        sum += parseInt(jsonData[i].wattage);
+
 
                         if (index != previous) {
                             console.log("Count:" + count + " Sum:" + sum + "index: " + index)
-                            data[previous] = ({x: previous, y: ((sum / count) / 1000)* 3600}) ;
+                            data[index - 1] = ({x: previous, y: ((sum / count) / 1000)* 3600}) ;
                             previous = index;
                             sum = 0;
                             count = 1;
@@ -80,6 +80,8 @@ jQuery(document).ready(function($) {
                         } else {
                             count++;
                         }
+                        sum += parseInt(jsonData[i].wattage);
+
                     }
                     data[previous] = ({x: previous, y: ((sum / count) / 1000)* 3600});
                     console.log(data)
