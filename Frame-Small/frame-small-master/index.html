@@ -40,13 +40,14 @@
     <div class="brick small" >
         <div class="dashboard-header">
             TODAY 
-            <button style="height: 23px; width:15px;float:right;margin-right:5px;" class="btn hvr-fade"><p style="margin-top:-10px;margin-left:-5px; font-weight:bold; font-size:1.3em;">+</p></button>
+
+            <button data-toggle="modal" data-target="#myModalStock" style="height: 23px; width:15px;float:right;margin-right:5px;" class="btn hvr-fade"><p style="margin-top:-10px;margin-left:-5px; font-weight:bold; font-size:1.3em;">+</p></button>
         </div>
 
         <!-- 2DO LIST -->
         <div id="todo-list" style=" height:100px; overflow: auto;">
                 <!-- LOOP OVER THE TODOS IN $scope.todos -->
-                <div id="testbox" style="color:white; padding-left:5px;white-space:nowrap; overflow:hidden;margin-right:8px;" class="checkbox" ng-repeat="todo in todos">
+                <div id="testbox" style="color:white; padding-left:5px;white-space:nowrap; overflow:hidden;margin-right:8px;font-family:Arial;" class="checkbox" ng-repeat="todo in todos">
                     <label>
                         <input style="color:white;" type="checkbox"  ng-click="deleteTodo(todo._id)"> {{ todo.text }}
                     </label>
@@ -59,8 +60,8 @@
             POWER CONSUMPTION 
 
             <div class="btn-group" data-toggle="buttons" style="float:right; height:25px;">
-                <label class="babel-btn btn active" style="color:black;background-color:#C0C0C0; height:25px;vertical-align: middle; border: solid 1px;">
-                    <input type="radio" name="options" style="color:black;" id="option1" autocomplete="off" checked onchange="GenerateChart(0)"> Day
+                <label class="babel-btn btn active hvr-fade" style="color:black;background-color:#C0C0C0; height:25px;vertical-align: middle; border: solid 1px;">
+                    <input type="radio" name="options" style="color:black;" class="btn hvr-fade" id="option1" autocomplete="off" checked onchange="GenerateChart(0)"> Day
                 </label>
                 <label class="btn" style="background-color:#C0C0C0;height:25px;color:black;border: solid 1px;">
                     <input type="radio" style="text-align: center; vertical-align:middle;" name="options" id="option2" autocomplete="off"> Week
@@ -152,7 +153,7 @@
             
         </div>
         
-        <div class="container" style="font-size:1.15em;width:100%;color:white;margin-left:-5px;padding-top:5px;">
+        <div class="container" style="font-size:1.15em;width:100%;color:white;margin-left:-5px;padding-top:5px;font-family:Arial;">
             <table border="1">
                 <tr>
                     <td style="line-height:120%;">Devices:</td>
@@ -179,7 +180,14 @@
         </div>
 
     </div>
-    <div class="brick small"></div>
+    <div class="brick small">
+        <div class="dashboard-header">
+            ACTIVE USERS
+        </div>
+        <div align="center"><button style="background-color:Transparent;background-repeat:no-repeat;border:none;outline:none;overflow:hidden;"><i align="center" style="margin-top:10px;color:white;font-size:85px;" class="fa fa-users"><p style="margin-top:-33px;color:green;font-size:0.4em;font-weight:bold;">3</p></i></button>
+            
+        </div>
+    </div>
     
     <div class="brick small-long">
         <div class="dashboard-header" style="margin-bottom:5px;">SHORTCUTS</div>
@@ -266,9 +274,6 @@
 </div>
 
 
-
-
-
 <!-- Modal2 -->
     <div class="modal fade" id="myModalStock" role="dialog">
         <div class="modal-dialog">
@@ -283,7 +288,7 @@
                         <form class="form-inline">
                             <div class="form-group">
                                 <!-- BIND THIS VALUE TO formData.text IN ANGULAR -->
-                            <input style="margin-left:20px; margin-right: 20px;resize:horizontal; width:200px" id="todo-item" type="text" class="form-control input-md text-center" placeholder="What's on todays agenda?" ng-model="formData.text">    
+                            <input maxlength="20" style="margin-left:20px; margin-right: 20px;resize:horizontal; width:200px" id="todo-item" type="text" class="form-control input-md text-center" placeholder="What's on todays agenda?" ng-model="formData.text">    
                 </div>
                 
                 <!-- createToDo() WILL CREATE NEW TODOS -->
@@ -297,8 +302,6 @@
             </div>
         </div>
     </div>
-
-
 
 <!-- JAVASCRIPT CUSTOM FILES FROM LOCAL -->
 <script type="text/javascript" src="assets/js/gridly.js"></script>
