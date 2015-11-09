@@ -19,10 +19,16 @@
   height: 140px;
 }
 
-.small-long {
+.brick.large-long {
   width: 300px;
   height: 140px;
 }
+
+.brick.small-long {
+  width: 220px;
+  height: 140px;
+}
+
 
 .brick.large {
   width: 300px;
@@ -78,6 +84,23 @@
   border-radius:3px;
   cursor:pointer; 
   margin-right:3px;
+}
+#stat-btn {
+  float: right; 
+  width:20px; 
+  height:20px; 
+  border-radius:3px;
+  cursor:pointer; 
+  margin-right:3px;
+}
+
+#stat-btn {
+   float: right; 
+  width:20px; 
+  height:20px; 
+  border-radius:3px;
+  cursor:pointer; 
+  margin-right:5px;
 }
 
 .period-btn {
