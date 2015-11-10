@@ -43,7 +43,7 @@
         <div class="dashboard-header" style="color:#8C928A">
             TODAY 
 
-            <button data-toggle="modal" data-target="#myModalStock" style="height: 23px; width:15px;float:right;margin-right:5px;" class="btn hvr-fade"><p style="margin-top:-10px;margin-left:-5px; font-weight:bold; font-size:1.3em;">+</p></button>
+            <button data-toggle="modal" data-target="#myModalStock" style="height: 23px; width:15px;float:right;margin-right:5px;" class="btn hvr-fade"><p style="margin-top:-10px;margin-left:-5px; font-weight:bold; font-size:1.3em; color:#2A2A2A">+</p></button>
         </div>
 
         <!-- 2DO LIST -->
@@ -151,7 +151,7 @@
         <div class="dashboard-header">
             STATISTICS 
             
-            <button style="height: 23px; width:15px;float:right;margin-right:5px;" class="btn hvr-fade"><p style="margin-top:-8px;margin-left:-7px; font-weight:bold; font-size:1.3em;"><i class="fa fa-info-circle"></i></button>
+            <button style="height: 23px; width:15px;float:right;margin-right:5px;" class="btn hvr-fade"><p style="margin-top:-8px;margin-left:-7px; font-weight:bold; font-size:1.3em; color:#2A2A2A;"><i class="fa fa-info-circle"></i></button>
             
         </div>
         
@@ -163,19 +163,19 @@
                 </tr>
                 <tr>
                     <td>kwh/h:</td>
-                    <td>&nbsp;250</td>
+                    <td>&nbsp;738</td>
                 </tr>
                 <tr>
                     <td>Kwh/day:&nbsp;&nbsp;&nbsp;</td>
-                    <td>&nbsp;3500</td>
+                    <td>&nbsp;3391</td>
                 </tr>
                 <tr>
                     <td>kwh/week:</td>
-                    <td>&nbsp;20000</td>
+                    <td>&nbsp;18721</td>
                 </tr>
                 <tr>
                     <td>kwh/month:&nbsp;</td>
-                    <td>&nbsp;80000</td>
+                    <td>&nbsp;72308</td>
                 </tr>
                 
             </table>
@@ -186,7 +186,7 @@
         <div class="dashboard-header">
             ACTIVE USERS
         </div>
-        <div align="center"><button style="background-color:Transparent;background-repeat:no-repeat;border:none;outline:none;overflow:hidden;"><i align="center" style="margin-top:10px;color:#60B8EC;font-size:85px;" class="fa fa-users"><p style="margin-top:-33px;color:yellow;font-size:0.4em;font-weight:bold;">3</p></i></button>
+        <div align="center"><button style="background-color:Transparent;background-repeat:no-repeat;border:none;outline:none;overflow:hidden;"><i align="center" style="margin-top:10px;color:#449D44;font-size:85px;" class="fa fa-users"><p style="margin-top:-33px;color:yellow;font-size:0.4em;font-weight:bold;">3</p></i></button>
             
         </div>
     </div>
@@ -196,7 +196,7 @@
         <div class="container row" style="padding-left:5px;">
            
             <div align="center" style="border-radius: 2px;height: 45px; width:95px; margin-left:22px; background-color:grey; float:left; overflow:hidden; margin-bottom:5px;">
-                <button onclick="alertSecurity();" style="border-radius: 2px;height: 45px; width:95px;" class="btn hvr-fade"><i class="fa fa-lock fa-2x"></i></button>
+                <button id="security-btn" onclick="alertSecurity();" style="border-radius: 2px;height: 45px; width:95px;" class="btn hvr-fade"><i class="fa fa-lock fa-2x"></i></button>
             </div>    
             <div align="center" style="border-radius: 2px;height: 45px; width:95px; margin-left:5px; background-color:grey;overflow:hidden; float:left;">
                 <button style="border-radius: 2px;height: 45px; width:95px;" class="btn hvr-fade"><i class="fa fa-lightbulb-o fa-2x"></i></button>
@@ -207,7 +207,7 @@
                 <br>
 
             <div align="center" style="border-radius: 2px;height: 45px; width:95px; margin-top:-7px; margin-left:22px; background-color:grey; float:left; overflow:hidden; margin-bottom:5px;">
-                <button onclick="toggleCoffeeMaker();" style="border-radius: 2px;height: 45px; width:95px;" class="btn hvr-fade"><i class="fa fa-coffee fa-2x"></i></button>
+                <button id="coffee-maker" onclick="toggleCoffeeMaker();" style="border-radius: 2px;height: 45px; width:95px;" class="btn hvr-fade"><i class="fa fa-coffee fa-2x"></i></button>
             </div>    
             <div align="center" style="border-radius: 2px;height: 45px; width:95px; margin-left:5px; background-color:grey;overflow:hidden; float:left; margin-top:-7px;">
                 <button style="border-radius: 2px;height: 45px; width:95px;" class="btn hvr-fade"><i class="fa fa-cogs fa-2x"></i></button>
@@ -220,10 +220,10 @@
         <div class="container row" style="padding-left:5px;">
            
             <div align="center" style="border-radius: 2px;height: 45px; width:95px; margin-left:22px; background-color:grey; float:left; overflow:hidden; margin-bottom:5px;">
-                <button style="border-radius: 2px;height: 45px; width:95px;" class="btn hvr-fade">Home</button>
+                <button id="home-btn" onclick="toggleMode('home')" style="border-radius: 2px;height: 45px; width:95px;" class="btn hvr-fade">Home</button>
             </div>    
             <div align="center" style="border-radius: 2px;height: 45px; width:95px; margin-left:5px; background-color:grey;overflow:hidden; float:left;">
-                <button style="border-radius: 2px;height: 45px; width:95px;" class="btn hvr-fade">Away</button>
+                <button id="away-btn" onclick="toggleMode('away')" style="border-radius: 2px;height: 45px; width:95px;" class="btn hvr-fade">Away</button>
             </div>
 
                 <br>
@@ -231,10 +231,10 @@
                 <br>
 
             <div align="center" style="border-radius: 2px;height: 45px; width:95px; margin-top:-7px; margin-left:22px; background-color:grey; float:left; overflow:hidden; margin-bottom:5px;">
-                <button style="border-radius: 2px;height: 45px; width:95px;" class="btn hvr-fade">Night</button>
+                <button id="night-btn" onclick="toggleMode('night')" style="border-radius: 2px;height: 45px; width:95px;" class="btn hvr-fade">Night</button>
             </div>    
             <div align="center" style="border-radius: 2px;height: 45px; width:95px; margin-left:5px; background-color:grey;overflow:hidden; float:left; margin-top:-7px;">
-                <button style="border-radius: 2px;height: 45px; width:95px;" class="btn hvr-fade">Vacation</button>
+                <button id="vacation-btn" onclick="toggleMode('vacation')" style="border-radius: 2px;height: 45px; width:95px;" class="btn hvr-fade">Vacation</button>
             </div> 
         </div>
     </div>
@@ -305,24 +305,6 @@
         </div>
     </div>
 
-<script>
-function alertSecurity () {
-    swal("Security system is ON", "You have 20 seconds to leave the house!", "success");
-}
-var coffeeMaker = true;
-function toggleCoffeeMaker(){
-    if(coffeeMaker){
-        swal("The coffee maker is now turned OFF", "You can now relax =)", "success");
-        coffeeMaker = false;
-    } else if(!coffeeMaker){
-        swal("The coffee maker is now turned ON", "Ready in 5 minutes", "success");
-        coffeeMaker = true;
-    }
-}
-    
-</script>
-
-
 
 <!-- JAVASCRIPT CUSTOM FILES FROM LOCAL -->
 <script type="text/javascript" src="assets/js/gridly.js"></script>
@@ -331,7 +313,8 @@ function toggleCoffeeMaker(){
 <script type="text/javascript" src="assets/js/clock.js"></script>
 <script type="text/javascript" src="assets/js/weather-api.js"></script>
 <script type="text/javascript" src="assets/js/core.js"></script>
-
+<script type="text/javascript" src="assets/js/shortcuts.js"></script>
+<script type="text/javascript" src="assets/js/mode.js"></script>
 
 </body>
 </html>

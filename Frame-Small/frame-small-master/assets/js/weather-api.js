@@ -39,7 +39,11 @@ $(function(){
                 //console.log(celsius);
                 celsius = celsius.toFixed(1);   // Only get 1 didget
                 // console.log(celsius);
-                document.getElementById('wInsideTemp').innerHTML = futureHomeData.fragment.site.temperature.inside.toFixed(1);
+                if(futureHomeData == undefined){
+                    document.getElementById('wInsideTemp').innerHTML = "N/A";
+                } else{
+                document.getElementById('wInsideTemp').innerHTML = futureHomeData.fragment.site.temperature.inside.toFixed(1); 
+                }
                 document.getElementById('wOutsideTemp').innerHTML = celsius;
 
                 // TOMORROWS WEATHER
