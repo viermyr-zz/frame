@@ -45,7 +45,7 @@ function getYearData(callback) {
                     if (index === -1) continue;
 
                     if (index != previous) {
-                        data[previous] = ((sum / count) / 1000) * 3600 ;
+                        data[previous] = ((sum) / 1000) * 3600 ;
                         previous = index;
                         sum = 0;
                         count = 1;
@@ -54,7 +54,7 @@ function getYearData(callback) {
                     }
                     sum += parseInt(jsonData[i].wattage);
                 }
-                data[previous] = ( ((sum / count) / 1000)* 3600);
+                data[previous] = ( ((sum) / 1000)* 3600);
                 callback(data);
             }
         }
@@ -126,7 +126,7 @@ function getMonthData(callback) {
 
                     if (index != previous) {
                         //console.log("Count:" + count + " Sum:" + sum + "index: " + index)
-                        data[previous] = ((sum / count) / 1000) * 3600 ;
+                        data[previous] = ((sum) / 1000) * 3600 ;
                         previous = index;
                         sum = 0;
                         count = 1;
@@ -135,7 +135,7 @@ function getMonthData(callback) {
                     }
                     sum += parseInt(jsonData[i].wattage);
                 }
-                data[previous] = ( ((sum / count) / 1000)* 3600);
+                data[previous] = ( ((sum) / 1000)* 3600);
                 callback(data);
             }
         }
@@ -201,7 +201,7 @@ function getWeekData(callback) {
 
                     if (index != previous) {
                         //console.log("Count:" + count + " Sum:" + sum + "index: " + index)
-                        data[previous] = ((sum / count) / 1000) * 3600;
+                        data[previous] = ((sum) / 1000) * 3600;
                         previous = index;
                         sum = 0;
                         count = 1;
@@ -210,7 +210,7 @@ function getWeekData(callback) {
                     }
                     sum += parseInt(jsonData[i].wattage);
                 }
-                data[previous] = ( ((sum / count) / 1000) * 3600);
+                data[previous] = ( ((sum) / 1000) * 3600);
                 callback(data);
             }
         }
