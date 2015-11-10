@@ -109,14 +109,14 @@
 
 #consumption-btns{
   float:right; 
-  height:25px;
+  height:20px;
 }
 #consumption-btns label {
   color:black;
   background-color:#C0C0C0; 
-  height:25px;
-  vertical-align: middle; 
-  border: solid 1px;
+  height:27px;
+  margin-top: -2px;
+  margin-right: 2px;
 }
 
 
