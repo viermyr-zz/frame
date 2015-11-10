@@ -6,11 +6,10 @@ function alertSecurity () {
 		securityMode = false;
 	} else if(!securityMode){
 		swal("Security system is ON", "You have 20 seconds to leave the house!", "success");
-    document.getElementById("security-btn").style.backgroundColor = "#449D44";
-    securityMode = true;
+    	document.getElementById("security-btn").style.backgroundColor = "#449D44";
+    	securityMode = true;
 	}
 }
-
 
 var coffeeMaker = false;
 function toggleCoffeeMaker(){
@@ -23,9 +22,4 @@ function toggleCoffeeMaker(){
         document.getElementById("coffee-maker").style.backgroundColor = "#449D44";
         coffeeMaker = true;
     }
-}
-
-function lightsInfo(){
-	
-
 }
