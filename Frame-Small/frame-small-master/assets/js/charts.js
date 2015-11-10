@@ -293,7 +293,7 @@ function getDevices(){
     $.ajax({
         url: "http://localhost:8082/api/getDevices/",
         success: function (jsonData) {
-            document.getElementById('oLights').innerHTML = jsonData;
+            document.getElementById('oLights').innerHTML = jsonData.fragment.site.lighting.on + "/" + jsonData.fragment.site.lighting.total;
         },
         error: function(err){
             console.log(err);
