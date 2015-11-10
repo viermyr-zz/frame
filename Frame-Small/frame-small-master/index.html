@@ -11,6 +11,7 @@
     
     <!-- JAVASCRIPT PLUGINS, LIBRARYS AND FRAMEWORKS FROM LOCAL -->
     <script type="text/javascript" src="assets/js/chart.min.js"></script>
+    <script src="assets/js/sweetalert.min.js"></script>
     
 
     <!-- CSS LIBRARYS AND FRAMEWORKS FROM CDN -->
@@ -20,6 +21,8 @@
     <!-- CSS LIBRARYS AND FRAMEWORKS FROM LOCAL -->
     <link rel="stylesheet" type="text/css" href="assets/css/jquery.gridly.css"/>
     <link rel="stylesheet" type="text/css" href="assets/css/custom.css">
+    <link rel="stylesheet" type="text/css" href="assets/css/hover.css" media="all">
+    <link rel="stylesheet" type="text/css" href="assets/css/sweetalert.css">
 
 </head>
 <body ng-app="mainApp" ng-controller="mainController">
@@ -37,14 +40,16 @@
     </div>
         
     <div class="brick small" >
-        <div class="dashboard-header">
-            TODAY <span align="center" data-toggle="modal" data-target="#myModalStock" id="today-btn" class="btn-primary">+</span>
+        <div class="dashboard-header" style="color:#8C928A">
+            TODAY 
+
+            <button data-toggle="modal" data-target="#myModalStock" style="height: 23px; width:15px;float:right;margin-right:5px;" class="btn hvr-fade"><p style="margin-top:-10px;margin-left:-5px; font-weight:bold; font-size:1.3em; color:#2A2A2A">+</p></button>
         </div>
 
         <!-- 2DO LIST -->
         <div id="todo-list" style=" height:100px; overflow: auto;">
                 <!-- LOOP OVER THE TODOS IN $scope.todos -->
-                <div id="testbox" style="color:white; padding-left:5px;white-space:nowrap; overflow:hidden;margin-right:8px;" class="checkbox" ng-repeat="todo in todos">
+                <div id="testbox" style="color:#E9D5D5; padding-left:5px;white-space:nowrap; overflow:hidden;margin-right:8px;font-family:Arial;font-size:1.07em;" class="checkbox" ng-repeat="todo in todos">
                     <label>
                         <input style="color:white;" type="checkbox"  ng-click="deleteTodo(todo._id)"> {{ todo.text }}
                     </label>
@@ -57,16 +62,17 @@
             POWER CONSUMPTION 
 
             <div class="btn-group" data-toggle="buttons" style="float:right; height:25px;">
-                <label class="btn btn-primary active" style="height:25px;vertical-align: middle;">
-                    <input type="radio" name="options" style="margin-bottom:50px;" id="option1" autocomplete="off" checked onchange="GenerateChart(0)"> Day
+                <label class="babel-btn btn active hvr-fade" style="color:black;background-color:#C0C0C0; height:25px;vertical-align: middle; border: solid 1px;">
+                    <input type="radio" name="options" style="color:black;" class="btn hvr-fade" id="option1" autocomplete="off" checked onchange="GenerateChart(0)"> Day
                 </label>
-                <label class="btn btn-primary" style="height:25px">
-                    <input type="radio" style="text-align: center; vertical-align:middle;" name="options" id="option2" autocomplete="off" onchange="GenerateChart(1)"> Week
+
+                <label class="btn" style="background-color:#C0C0C0;height:25px;color:black;border: solid 1px;">
+                    <input type="radio" style="text-align: center; vertical-align:middle;" name="options" id="option2" autocomplete="off" onchange="GenerateChart(1)" > Week
                 </label>
-                <label class="btn btn-primary" style="height:25px;">
+                <label class="btn" style="background-color:#C0C0C0;height:25px;color:black;border: solid 1px;">
                     <input type="radio" name="options" id="option3" autocomplete="off" onchange="GenerateChart(2)"> Month
                 </label>
-                <label class="btn btn-primary" style="height:25px;">
+                <label class="btn" style="background-color:#C0C0C0;height:25px;color:black;border: solid 1px;">
                     <input type="radio" name="options" id="option4" autocomplete="off" onchange="GenerateChart(3)"> Year
                 </label>
             </div>
@@ -141,16 +147,16 @@
                 </div>
             </div>
         </div>
-
-
-
     </div>
     <div class="brick small">
         <div class="dashboard-header">
-            <p>STATISTICS</p>
+            STATISTICS 
+            
+            <button style="height: 23px; width:15px;float:right;margin-right:5px;" class="btn hvr-fade"><p style="margin-top:-8px;margin-left:-7px; font-weight:bold; font-size:1.3em; color:#2A2A2A;"><i class="fa fa-info-circle"></i></button>
+            
         </div>
         
-        <div class="container" style="font-size:1.15em;width:100%;color:white;margin-left:-5px;padding-top:5px;">
+        <div class="container" style="font-size:1.15em;width:100%;color:#E9D5D5;margin-left:-5px;padding-top:5px;font-family:Arial;">
             <table border="1">
                 <tr>
                     <td style="line-height:120%;">Devices:</td>
@@ -158,40 +164,114 @@
                 </tr>
                 <tr>
                     <td>kwh/h:</td>
-                    <td>&nbsp;250</td>
+                    <td>&nbsp;738</td>
                 </tr>
                 <tr>
                     <td>Kwh/day:&nbsp;&nbsp;&nbsp;</td>
-                    <td>&nbsp;3500</td>
+                    <td>&nbsp;3391</td>
                 </tr>
                 <tr>
                     <td>kwh/week:</td>
-                    <td>&nbsp;20000</td>
+                    <td>&nbsp;18721</td>
                 </tr>
                 <tr>
                     <td>kwh/month:&nbsp;</td>
-                    <td>&nbsp;80000</td>
+                    <td>&nbsp;72308</td>
                 </tr>
                 
             </table>
         </div>
 
     </div>
-    <div class="brick small"></div>
-    <div class="brick small"></div>
-    <div class="brick small"></div>
-    <div class="brick small"></div>
+    <div class="brick small">
+        <div class="dashboard-header">
+            ACTIVE USERS
+        </div>
+        <div align="center"><button style="background-color:Transparent;background-repeat:no-repeat;border:none;outline:none;overflow:hidden;"><i align="center" style="margin-top:10px;color:#449D44;font-size:85px;" class="fa fa-users"><p style="margin-top:-33px;color:yellow;font-size:0.4em;font-weight:bold;">3</p></i></button>
+            
+        </div>
+    </div>
+    
     <div class="brick small-long">
-        <div class="dashboard-header" style="margin-bottom:5px;">
+        <div class="dashboard-header" style="margin-bottom:5px;">SHORTCUTS</div>
+        <div class="container row" style="padding-left:5px;">
+           
+            <div align="center" style="border-radius: 2px;height: 45px; width:95px; margin-left:22px; background-color:grey; float:left; overflow:hidden; margin-bottom:5px;">
+                <button id="security-btn" onclick="alertSecurity();" style="border-radius: 2px;height: 45px; width:95px;" class="btn hvr-fade"><i class="fa fa-lock fa-2x"></i></button>
+            </div>    
+            <div align="center" style="border-radius: 2px;height: 45px; width:95px; margin-left:5px; background-color:grey;overflow:hidden; float:left;">
+                <button style="border-radius: 2px;height: 45px; width:95px;" class="btn hvr-fade"><i class="fa fa-lightbulb-o fa-2x"></i></button>
+            </div>
+
+                <br>
+                <br>
+                <br>
+
+            <div align="center" style="border-radius: 2px;height: 45px; width:95px; margin-top:-7px; margin-left:22px; background-color:grey; float:left; overflow:hidden; margin-bottom:5px;">
+                <button id="coffee-maker" onclick="toggleCoffeeMaker();" style="border-radius: 2px;height: 45px; width:95px;" class="btn hvr-fade"><i class="fa fa-coffee fa-2x"></i></button>
+            </div>    
+            <div align="center" style="border-radius: 2px;height: 45px; width:95px; margin-left:5px; background-color:grey;overflow:hidden; float:left; margin-top:-7px;">
+                <button style="border-radius: 2px;height: 45px; width:95px;" class="btn hvr-fade"><i class="fa fa-cogs fa-2x"></i></button>
+            </div> 
+        </div>
+    </div>
+   
+    <div class="brick small-long">
+        <div class="dashboard-header" style="margin-bottom:5px;">MODE</div>
+        <div class="container row" style="padding-left:5px;">
+           
+            <div align="center" style="border-radius: 2px;height: 45px; width:95px; margin-left:22px; background-color:grey; float:left; overflow:hidden; margin-bottom:5px;">
+                <button id="home-btn" onclick="toggleMode('home')" style="border-radius: 2px;height: 45px; width:95px;" class="btn hvr-fade">Home</button>
+            </div>    
+            <div align="center" style="border-radius: 2px;height: 45px; width:95px; margin-left:5px; background-color:grey;overflow:hidden; float:left;">
+                <button id="away-btn" onclick="toggleMode('away')" style="border-radius: 2px;height: 45px; width:95px;" class="btn hvr-fade">Away</button>
+            </div>
+
+                <br>
+                <br>
+                <br>
+
+            <div align="center" style="border-radius: 2px;height: 45px; width:95px; margin-top:-7px; margin-left:22px; background-color:grey; float:left; overflow:hidden; margin-bottom:5px;">
+                <button id="night-btn" onclick="toggleMode('night')" style="border-radius: 2px;height: 45px; width:95px;" class="btn hvr-fade">Night</button>
+            </div>    
+            <div align="center" style="border-radius: 2px;height: 45px; width:95px; margin-left:5px; background-color:grey;overflow:hidden; float:left; margin-top:-7px;">
+                <button id="vacation-btn" onclick="toggleMode('vacation')" style="border-radius: 2px;height: 45px; width:95px;" class="btn hvr-fade">Vacation</button>
+            </div> 
+        </div>
+    </div>
+    
+
+    <div class="brick large-long">
+        <div class="dashboard-header" style="margin-bottom:7px;">
             ROOM OVERVIEW
         </div>
-        <div class="container" style="padding-left:5px;">
-            <div align="center" style="border-radius: 2px;height: 45px; width:45px; background-color:grey;overflow:hidden; margin-bottom:5px;">
-                <i class="fa fa-car fa-2x"></i>
+        <div class="container row" style="padding-left:5px;">
+           
+            <div align="center" style="border-radius: 2px;height: 45px; width:90px; margin-left:20px; background-color:grey; float:left; overflow:hidden; margin-bottom:5px;">
+                <button style="border-radius: 2px;height: 45px; width:90px;" class="btn hvr-fade"><i class="fa fa-bed fa-2x"></i></button>
             </div>    
-            <div align="center" style="border-radius: 2px;height: 45px; width:45px; background-color:grey;overflow:hidden;">
-                <i class="fa fa-bed fa-2x"></i>
+            <div align="center" style="border-radius: 2px;height: 45px; width:90px; margin-left:5px; background-color:grey;overflow:hidden; float:left;">
+                <button style="border-radius: 2px;height: 45px; width:90px;" class="btn hvr-fade"><i class="fa fa-cutlery fa-2x"></i></button>
             </div>
+            <div align="center" style="border-radius: 2px;height: 45px; width:90px; margin-left:5px; float:left; background-color:grey;overflow:hidden;">
+                <button style="border-radius: 2px;height: 45px; width:90px;" class="btn hvr-fade"><i class="fa fa-car fa-2x"></i></button>
+            </div>    
+            <br>
+            <br>
+            <br>
+            
+            
+
+            <div align="center" style="border-radius: 2px;height: 45px; width:90px; margin-top:-7px; margin-left:20px; background-color:grey; float:left; overflow:hidden; margin-bottom:5px;">
+            <button style="border-radius: 2px;height: 45px; width:90px;" class="btn hvr-fade"><i class="fa fa-television fa-2x"></i></button>
+                
+            </div>    
+            <div align="center" style="border-radius: 2px;height: 45px; width:90px; margin-left:5px; background-color:grey;overflow:hidden; float:left; margin-top:-7px;">
+                <button style="border-radius: 2px;height: 45px; width:90px;" class="btn hvr-fade"><i class="fa fa-tint fa-2x"></i></button>
+            </div>
+            <div align="center" style="margin-top:-7px;border-radius: 2px;height: 45px; width:90px; margin-left:5px; float:left; background-color:grey;overflow:hidden;">
+                <button style="border-radius: 2px;height: 45px; width:90px;" class="btn hvr-fade"><i class="fa fa-plus-square fa-2x"></i></button>
+            </div>  
         </div>
     </div>
 </div>
@@ -211,7 +291,7 @@
                         <form class="form-inline">
                             <div class="form-group">
                                 <!-- BIND THIS VALUE TO formData.text IN ANGULAR -->
-                            <input style="margin-left:20px; margin-right: 20px;resize:horizontal; width:200px" id="todo-item" type="text" class="form-control input-md text-center" placeholder="What's on todays agenda?" ng-model="formData.text">    
+                            <input maxlength="20" style="margin-left:20px; margin-right: 20px;resize:horizontal; width:200px" id="todo-item" type="text" class="form-control input-md text-center" placeholder="What's on todays agenda?" ng-model="formData.text">    
                 </div>
                 
                 <!-- createToDo() WILL CREATE NEW TODOS -->
@@ -227,7 +307,6 @@
     </div>
 
 
-
 <!-- JAVASCRIPT CUSTOM FILES FROM LOCAL -->
 <script type="text/javascript" src="assets/js/gridly.js"></script>
 <script type="text/javascript" src="assets/js/chart.min.js"></script>
@@ -235,7 +314,10 @@
 <script type="text/javascript" src="assets/js/clock.js"></script>
 <script type="text/javascript" src="assets/js/weather-api.js"></script>
 <script type="text/javascript" src="assets/js/core.js"></script>
-
+<script type="text/javascript" src="assets/js/shortcuts.js"></script>
+<script type="text/javascript" src="assets/js/mode.js"></script>
 
 </body>
 </html>
+
+

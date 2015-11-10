@@ -24,6 +24,7 @@
     "mongodb": "^2.0.47",
     "mongoose": "^4.2.4",
     "morgan": "^1.6.1",
+    "sweetalert": "^1.1.3",
     "wunderground": "0.0.0",
     "wundergroundnode": "^0.9.0",
     "yahoo-finance": "^0.2.12"
