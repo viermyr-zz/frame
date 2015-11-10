@@ -60,6 +60,7 @@ function getYearData(callback) {
         }
     });
 }
+
 function getMonthData(callback) {
     var getDataFromDate = new Date();
     getDataFromDate.setMonth(getDataFromDate.getMonth() - 1);

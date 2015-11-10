@@ -26,10 +26,16 @@
 
 </head>
 <body ng-app="mainApp" ng-controller="mainController">
+
+<!-- GRID LAYOUT START -->
 <div class="gridly">
+    <!-- GRID HEADER START -->
     <div class="brick header">
+        <!-- HEADER -> DATE -->
         <span id="Date"></span>
+        <!-- HEADER -> LOGO -->
         <img id="fh-logo" src="assets/img/logo_B_transp_2Kpx.png">
+        <!-- HEADER -> TIME -->
         <span id="time">
             <span id="hours"></span>
             <span>:</span>
@@ -37,60 +43,62 @@
             <span>:</span>
             <span id="sec"></span>
         </span>
+    <!-- GRID HEADER END -->
     </div>
-        
-    <div class="brick small" >
-        <div class="dashboard-header" style="color:#8C928A">
-            TODAY 
 
-            <button data-toggle="modal" data-target="#myModalStock" style="height: 23px; width:15px;float:right;margin-right:5px;" class="btn hvr-fade"><p style="margin-top:-10px;margin-left:-5px; font-weight:bold; font-size:1.3em; color:#2A2A2A">+</p></button>
+    <!-- GRID TODAY BRICK START -->
+    <div class="brick small" >
+        <div class="dashboard-header" style="color:#8C928A; font-size:1.4em;">
+            TODAY <!-- TITLE -->
+            <button id="today-btn" data-toggle="modal" data-target="#myModalTodo" class="btn hvr-fade"><p>+</p></button>
         </div>
 
         <!-- 2DO LIST -->
         <div id="todo-list" style=" height:100px; overflow: auto;">
                 <!-- LOOP OVER THE TODOS IN $scope.todos -->
-                <div id="testbox" style="color:#E9D5D5; padding-left:5px;white-space:nowrap; overflow:hidden;margin-right:8px;font-family:Arial;font-size:1.07em;" class="checkbox" ng-repeat="todo in todos">
+                <div id="testbox" class="checkbox" ng-repeat="todo in todos">
                     <label>
-                        <input style="color:white;" type="checkbox"  ng-click="deleteTodo(todo._id)"> {{ todo.text }}
+                        <input type="checkbox"  ng-click="deleteTodo(todo._id)"> {{ todo.text }}
                     </label>
                 </div>
         </div>
+    <!-- GRID TODAY BRICK END -->
     </div>
 
+    <!-- GRID POWER CONSUMPTION BRICK START -->
     <div class="brick long">
         <div class="dashboard-header">
-            POWER CONSUMPTION 
-
-            <div class="btn-group" data-toggle="buttons" style="float:right; height:25px;">
-                <label class="babel-btn btn active hvr-fade" style="color:black;background-color:#C0C0C0; height:25px;vertical-align: middle; border: solid 1px;">
-                    <input type="radio" name="options" style="color:black;" class="btn hvr-fade" id="option1" autocomplete="off" checked onchange="GenerateChart(0)"> Day
+            POWER CONSUMPTION
+            <div id="consumption-btns" class="btn-group" data-toggle="buttons">
+                <label class="babel-btn btn active hvr-fade">
+                    <input type="radio" name="options" class="btn hvr-fade" id="option1" autocomplete="off" checked onchange="GenerateChart(0)"> 
+                    Day
                 </label>
-
-                <label class="btn" style="background-color:#C0C0C0;height:25px;color:black;border: solid 1px;">
-                    <input type="radio" style="text-align: center; vertical-align:middle;" name="options" id="option2" autocomplete="off" onchange="GenerateChart(1)" > Week
+                <label class="btn">
+                    <input type="radio" name="options" id="option2" onchange="GenerateChart(1)" autocomplete="off"> 
+                    Week
                 </label>
-                <label class="btn" style="background-color:#C0C0C0;height:25px;color:black;border: solid 1px;">
-                    <input type="radio" name="options" id="option3" autocomplete="off" onchange="GenerateChart(2)"> Month
+                <label class="btn">
+                    <input type="radio" name="options" id="option3" autocomplete="off" onchange="GenerateChart(2)"> 
+                    Month
                 </label>
-                <label class="btn" style="background-color:#C0C0C0;height:25px;color:black;border: solid 1px;">
-                    <input type="radio" name="options" id="option4" autocomplete="off" onchange="GenerateChart(3)"> Year
+                <label class="btn">
+                    <input type="radio" name="options" id="option4" autocomplete="off" onchange="GenerateChart(3)"> 
+                    Year
                 </label>
             </div>
-       <!--     <span align="center" class="btn-primary period-btn">Year</span>
-            <span align="center" class="btn-primary period-btn">Month</span>
-            <span align="center" class="btn-primary period-btn">Week</span>
-            <span align="center" class="btn-primary period-btn">Day</span>
-            -->
         </div>
         <canvas id="buyers"></canvas>  
+    <!-- GRID POWER CONSUMPTION BRICK END -->
     </div>
-    
-    
+
+    <!-- GRID WEATHER BRICK START -->
     <div class="brick large">
         <div class="dashboard-header">
             WEATHER REPORT
         </div>
         <div class="row">
+            <!-- MAIN WEATHER ICON -->
             <div class="col-sm-4">
                 <div class="weather-icon">
                     <div align="center">
@@ -99,6 +107,7 @@
                 </div>
             </div>
 
+            <!-- OUTSIDE TEMPERATURE -->
             <div class="col-sm-4 weather-border">
                 <div class="weather-text">
                     <h2 align="center">Outside</h2>
@@ -106,6 +115,7 @@
                 </div>
             </div>
 
+            <!-- INSIDE TEMPERATURE -->
             <div class="col-sm-4 weather-border">
                 <div class="weather-text">
                     <h2 align="center">Inside</h2>
@@ -116,6 +126,7 @@
 
 
         <div class="row weather-days">
+            <!-- WEATHER FORECAST TODAY+1 -->
             <div class="col-sm-4">
                 <div class="daily-weather">
                     <h2 class="day" id="day1-txt"></h2>
@@ -123,9 +134,10 @@
                         <img class="forecast-img" id="iconTest1" src="">
                     </h1>
                     <h3 class="degrees" id="day1-degrees"></h3>
-                    
                 </div>
             </div>
+
+            <!-- WEATHER FORECAST TODAY+2 -->
             <div class="col-sm-4">
                 <div class="daily-weather">
                     <h2 class="day" id="day2-txt"></h2>
@@ -133,9 +145,10 @@
                         <img class="forecast-img" id="iconTest2" src="">
                     </h1>
                     <h3 class="degrees" id="day2-degrees"></h3>
-                    
                 </div>
             </div>
+
+            <!-- WEATHER FORECAST TODAY+3 -->
             <div class="col-sm-4">
                 <div class="daily-weather">
                     <h2 class="day" id="day3-txt"></h2>
@@ -143,20 +156,26 @@
                         <img class="forecast-img" id="iconTest3" src="">
                     </h1>
                     <h3 class="degrees" id="day3-degrees"></h3>
-                    
                 </div>
             </div>
         </div>
+    <!-- GRID WEATHER BRICK END -->
     </div>
+
+    <!-- GRID STATISTICS BRICK START -->
     <div class="brick small">
-        <div class="dashboard-header">
+        <div class="dashboard-header" style="font-size:1.4em;">
             STATISTICS 
             
-            <button style="height: 23px; width:15px;float:right;margin-right:5px;" class="btn hvr-fade"><p style="margin-top:-8px;margin-left:-7px; font-weight:bold; font-size:1.3em; color:#2A2A2A;"><i class="fa fa-info-circle"></i></button>
+            <button id="stats-btn" ng-click="newDumyData()" class="btn hvr-fade">
+                <p>
+                    <i class="fa fa-info-circle"></i>
+                </p>
+            </button>
             
         </div>
         
-        <div class="container" style="font-size:1.15em;width:100%;color:#E9D5D5;margin-left:-5px;padding-top:5px;font-family:Arial;">
+        <div id="stats-container" class="container">
             <table border="1">
                 <tr>
                     <td style="line-height:120%;">Devices:</td>
@@ -181,130 +200,179 @@
                 
             </table>
         </div>
-
+    <!-- GRID STATISTICS BRICK END -->
     </div>
+
+    <!-- GRID ACTIVE USERS BRICK START -->
     <div class="brick small">
-        <div class="dashboard-header">
+        <div class="dashboard-header" style="font-size:1.4em;">
             ACTIVE USERS
         </div>
-        <div align="center"><button style="background-color:Transparent;background-repeat:no-repeat;border:none;outline:none;overflow:hidden;"><i align="center" style="margin-top:10px;color:#449D44;font-size:85px;" class="fa fa-users"><p style="margin-top:-33px;color:yellow;font-size:0.4em;font-weight:bold;">3</p></i></button>
+        <div align="center">
+            <button id="active-users-btn">
+                <i align="center" class="fa fa-users">
+                    <p>3</p>
+                </i>
+            </button>
             
         </div>
+    <!-- GRID ACTIVE USERS BRICK END -->
     </div>
     
+    <!-- GRID SHORTCUTS BRICK START -->
     <div class="brick small-long">
         <div class="dashboard-header" style="margin-bottom:5px;">SHORTCUTS</div>
         <div class="container row" style="padding-left:5px;">
            
-            <div align="center" style="border-radius: 2px;height: 45px; width:95px; margin-left:22px; background-color:grey; float:left; overflow:hidden; margin-bottom:5px;">
-                <button id="security-btn" onclick="alertSecurity();" style="border-radius: 2px;height: 45px; width:95px;" class="btn hvr-fade"><i class="fa fa-lock fa-2x"></i></button>
+           <!-- SECURITY BUTTON -->
+            <div id="security-div" align="center">
+                <button id="security-btn" class="btn hvr-fade" onclick="alertSecurity();">
+                    <i class="fa fa-lock fa-2x"></i>
+                </button>
             </div>    
-            <div align="center" style="border-radius: 2px;height: 45px; width:95px; margin-left:5px; background-color:grey;overflow:hidden; float:left;">
-                <button style="border-radius: 2px;height: 45px; width:95px;" class="btn hvr-fade"><i class="fa fa-lightbulb-o fa-2x"></i></button>
+
+            <!-- LIGHTBULB BUTTON -->
+            <div id="lightbulb-div" align="center">
+                <button class="btn hvr-fade">
+                    <i class="fa fa-lightbulb-o fa-2x"></i>
+                </button>
             </div>
 
-                <br>
-                <br>
-                <br>
+            <br><br><br>
 
-            <div align="center" style="border-radius: 2px;height: 45px; width:95px; margin-top:-7px; margin-left:22px; background-color:grey; float:left; overflow:hidden; margin-bottom:5px;">
-                <button id="coffee-maker" onclick="toggleCoffeeMaker();" style="border-radius: 2px;height: 45px; width:95px;" class="btn hvr-fade"><i class="fa fa-coffee fa-2x"></i></button>
+            <!-- COFFEE BUTTON -->
+            <div id="coffee-div" align="center">
+                <button id="coffee-maker" onclick="toggleCoffeeMaker();" class="btn hvr-fade">
+                    <i class="fa fa-coffee fa-2x"></i>
+                </button>
             </div>    
-            <div align="center" style="border-radius: 2px;height: 45px; width:95px; margin-left:5px; background-color:grey;overflow:hidden; float:left; margin-top:-7px;">
-                <button style="border-radius: 2px;height: 45px; width:95px;" class="btn hvr-fade"><i class="fa fa-cogs fa-2x"></i></button>
+
+            <!-- SETTINGS BUTTON -->
+            <div id="settings-div" align="center">
+                <button class="btn hvr-fade">
+                    <i class="fa fa-cogs fa-2x"></i>
+                </button>
             </div> 
         </div>
+    <!-- GRID SHORTCUTS BRICK START -->
     </div>
    
+   <!-- GRID MODE BRICK START -->
     <div class="brick small-long">
         <div class="dashboard-header" style="margin-bottom:5px;">MODE</div>
         <div class="container row" style="padding-left:5px;">
-           
-            <div align="center" style="border-radius: 2px;height: 45px; width:95px; margin-left:22px; background-color:grey; float:left; overflow:hidden; margin-bottom:5px;">
-                <button id="home-btn" onclick="toggleMode('home')" style="border-radius: 2px;height: 45px; width:95px;" class="btn hvr-fade">Home</button>
-            </div>    
-            <div align="center" style="border-radius: 2px;height: 45px; width:95px; margin-left:5px; background-color:grey;overflow:hidden; float:left;">
-                <button id="away-btn" onclick="toggleMode('away')" style="border-radius: 2px;height: 45px; width:95px;" class="btn hvr-fade">Away</button>
+
+           <!-- HOME BUTTON -->
+            <div id="home-div" align="center">
+                <button id="home-btn" onclick="toggleMode('home')" class="btn hvr-fade">Home</button>
             </div>
 
-                <br>
-                <br>
-                <br>
+            <!-- AWAY BUTTON -->    
+            <div id="away-div" align="center">
+                <button id="away-btn" onclick="toggleMode('away')" class="btn hvr-fade">Away</button>
+            </div>
 
-            <div align="center" style="border-radius: 2px;height: 45px; width:95px; margin-top:-7px; margin-left:22px; background-color:grey; float:left; overflow:hidden; margin-bottom:5px;">
-                <button id="night-btn" onclick="toggleMode('night')" style="border-radius: 2px;height: 45px; width:95px;" class="btn hvr-fade">Night</button>
+            <br><br><br>
+
+            <!-- NIGHT BUTTON -->
+            <div id="night-div" align="center">
+                <button id="night-btn" onclick="toggleMode('night')" class="btn hvr-fade">Night</button>
             </div>    
-            <div align="center" style="border-radius: 2px;height: 45px; width:95px; margin-left:5px; background-color:grey;overflow:hidden; float:left; margin-top:-7px;">
-                <button id="vacation-btn" onclick="toggleMode('vacation')" style="border-radius: 2px;height: 45px; width:95px;" class="btn hvr-fade">Vacation</button>
+
+            <!-- VACATION BUTTON -->
+            <div id="vacation-div" align="center">
+                <button id="vacation-btn" onclick="toggleMode('vacation')" class="btn hvr-fade">Vacation</button>
             </div> 
         </div>
+    <!-- GRID MODE BRICK END -->
     </div>
     
-
+    <!-- GRID ROOM OVERVIEW BRICK START -->
     <div class="brick large-long">
         <div class="dashboard-header" style="margin-bottom:7px;">
             ROOM OVERVIEW
         </div>
         <div class="container row" style="padding-left:5px;">
-           
-            <div align="center" style="border-radius: 2px;height: 45px; width:90px; margin-left:20px; background-color:grey; float:left; overflow:hidden; margin-bottom:5px;">
-                <button style="border-radius: 2px;height: 45px; width:90px;" class="btn hvr-fade"><i class="fa fa-bed fa-2x"></i></button>
-            </div>    
-            <div align="center" style="border-radius: 2px;height: 45px; width:90px; margin-left:5px; background-color:grey;overflow:hidden; float:left;">
-                <button style="border-radius: 2px;height: 45px; width:90px;" class="btn hvr-fade"><i class="fa fa-cutlery fa-2x"></i></button>
-            </div>
-            <div align="center" style="border-radius: 2px;height: 45px; width:90px; margin-left:5px; float:left; background-color:grey;overflow:hidden;">
-                <button style="border-radius: 2px;height: 45px; width:90px;" class="btn hvr-fade"><i class="fa fa-car fa-2x"></i></button>
-            </div>    
-            <br>
-            <br>
-            <br>
             
-            
+            <!-- BEDROOM BUTTON -->
+            <div id="bedroom-div" align="center" >
+                <button class="btn hvr-fade">
+                    <i class="fa fa-bed fa-2x"></i>
+                </button>
+            </div>    
 
-            <div align="center" style="border-radius: 2px;height: 45px; width:90px; margin-top:-7px; margin-left:20px; background-color:grey; float:left; overflow:hidden; margin-bottom:5px;">
-            <button style="border-radius: 2px;height: 45px; width:90px;" class="btn hvr-fade"><i class="fa fa-television fa-2x"></i></button>
-                
-            </div>    
-            <div align="center" style="border-radius: 2px;height: 45px; width:90px; margin-left:5px; background-color:grey;overflow:hidden; float:left; margin-top:-7px;">
-                <button style="border-radius: 2px;height: 45px; width:90px;" class="btn hvr-fade"><i class="fa fa-tint fa-2x"></i></button>
+            <!-- KITCHEN BUTTON -->
+            <div id="kitchen-div" align="center">
+                <button class="btn hvr-fade">
+                    <i class="fa fa-cutlery fa-2x"></i>
+                </button>
             </div>
-            <div align="center" style="margin-top:-7px;border-radius: 2px;height: 45px; width:90px; margin-left:5px; float:left; background-color:grey;overflow:hidden;">
-                <button style="border-radius: 2px;height: 45px; width:90px;" class="btn hvr-fade"><i class="fa fa-plus-square fa-2x"></i></button>
+
+            <!-- GARAGE BUTTON -->
+            <div id="garage-div" align="center">
+                <button class="btn hvr-fade">
+                    <i class="fa fa-car fa-2x"></i>
+                </button>
+            </div>   
+
+            <br><br><br>
+            
+            <!-- LIVINGROOM BUTTON -->
+            <div id="livingroom-div" align="center">
+                <button class="btn hvr-fade">
+                    <i class="fa fa-television fa-2x"></i>
+                </button>
+            </div>    
+
+            <!-- BATHROOM BUTTON -->
+            <div id="bathroom-div" align="center">
+                <button class="btn hvr-fade">
+                    <i class="fa fa-tint fa-2x"></i>
+                </button>
+            </div>
+
+            <!-- OTHER AREAS BUTTON -->
+            <div id="other-areas-div" align="center">
+                <button class="btn hvr-fade"><i class="fa fa-plus-square fa-2x"></i></button>
             </div>  
         </div>
+    <!-- GRID ROOM OVERVIEW BRICK END -->
     </div>
+<!-- GRID LAYOUT END -->
 </div>
 
 
-<!-- Modal2 -->
-    <div class="modal fade" id="myModalStock" role="dialog">
-        <div class="modal-dialog">
-            <!-- Modal content-->
-            <div class="modal-content">
-                <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal">&times;</button>
-                    <h4 class="modal-title">Add a todo:</h4>
+<!-- TODO MODAL -->
+<div class="modal fade" id="myModalTodo" role="dialog">
+    <div class="modal-dialog">
+        <!-- MODAL CONTENT-->
+        <div class="modal-content">
+            <!-- MODAL HEADER-->
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">Add a todo:</h4>
+            </div>
+            <!-- MODAL BODY-->
+            <div class="modal-body">
+                <div id="todo-form" class="row">
+                    <form class="form-inline">
+                        <div class="form-group">
+                            <!-- BIND THIS VALUE TO formData.text IN ANGULAR -->
+                            <input maxlength="20" id="todo-item" type="text" class="form-control input-md text-center" 
+                            placeholder="What's on todays agenda?" ng-model="formData.text">    
+                        </div>
+            
+                        <!-- createToDo() WILL CREATE NEW TODOS -->
+                        <button  type="submit" class="btn btn-primary btn-md" ng-click="createTodo()">Add item</button>
+                    </form>
                 </div>
-                <div class="modal-body">
-                    <div id="todo-form" class="row">
-                        <form class="form-inline">
-                            <div class="form-group">
-                                <!-- BIND THIS VALUE TO formData.text IN ANGULAR -->
-                            <input maxlength="20" style="margin-left:20px; margin-right: 20px;resize:horizontal; width:200px" id="todo-item" type="text" class="form-control input-md text-center" placeholder="What's on todays agenda?" ng-model="formData.text">    
-                </div>
-                
-                <!-- createToDo() WILL CREATE NEW TODOS -->
-                <button  type="submit" class="btn btn-primary btn-md" ng-click="createTodo()">Add item</button>
-            </form>
-        </div>
-                </div>
-                <div class="modal-footer" align="center">
-                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                </div>
+            </div>
+            <div class="modal-footer" align="center">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
             </div>
         </div>
     </div>
+</div>
 
 
 <!-- JAVASCRIPT CUSTOM FILES FROM LOCAL -->
@@ -319,5 +387,3 @@
 
 </body>
 </html>
-
-

@@ -85,22 +85,327 @@
   cursor:pointer; 
   margin-right:3px;
 }
-#stat-btn {
-  float: right; 
-  width:20px; 
-  height:20px; 
-  border-radius:3px;
-  cursor:pointer; 
-  margin-right:3px;
+#today-btn p {
+  margin-top:-10px;
+  margin-left:-5px; 
+  font-weight:bold; 
+  font-size:1.3em; 
+  color:#2A2A2A;
 }
 
-#stat-btn {
-   float: right; 
-  width:20px; 
-  height:20px; 
-  border-radius:3px;
-  cursor:pointer; 
+#testbox {
+  color:#E9D5D5; 
+  padding-left:5px;
+  white-space:nowrap; 
+  overflow:hidden;
+  margin-right:8px;
+  font-family:Arial;
+  font-size:1.07em;
+}
+
+#testbox label input {
+  color:white;
+}
+
+#consumption-btns{
+  float:right; 
+  height:25px;
+}
+#consumption-btns label {
+  color:black;
+  background-color:#C0C0C0; 
+  height:25px;
+  vertical-align: middle; 
+  border: solid 1px;
+}
+
+
+#stats-btn {
+  height: 23px; 
+  width:15px;
+  float:right;
   margin-right:5px;
+}
+
+#stats-btn p {
+  margin-top:-8px;
+  margin-left:-7px; 
+  font-weight:bold; 
+  font-size:1.3em; 
+  color:#2A2A2A;
+}
+
+#stats-container {
+  font-size:1.15em;
+  width:100%;
+  color:#E9D5D5;
+  margin-left:-5px;
+  padding-top:5px;
+  font-family:Arial;
+}
+
+#active-users-btn {
+   background-color:Transparent;
+   background-repeat:no-repeat;
+   border:none;outline:none;
+   overflow:hidden;
+}
+
+#active-users-btn i {
+  margin-top:10px;
+  color:#5F8099;
+  font-size:85px;   
+}
+
+#active-users-btn i p {
+  margin-top:-33px;
+  color:#84C676;
+  font-size:0.4em;
+  font-weight:bold; 
+}
+
+#security-div {
+   border-radius: 2px;
+   height: 45px; width:95px; 
+   margin-left:22px; 
+   background-color:grey; 
+   float:left; 
+   overflow:hidden; 
+   margin-bottom:5px;
+}
+
+#security-div button { 
+  border-radius: 2px;
+  height: 45px; 
+  width:95px;
+}
+
+#lightbulb-div {
+   border-radius: 2px;
+   height: 45px; 
+   width:95px; 
+   margin-left:5px; 
+   background-color:grey;
+   overflow:hidden; 
+   float:left;
+}
+
+#lightbulb-div button {
+  border-radius: 2px;
+  height: 45px; 
+  width:95px;
+}
+
+#coffee-div {
+   border-radius: 2px;
+   height: 45px; 
+   width:95px; 
+   margin-top:-7px; 
+   margin-left:22px; 
+   background-color:grey; 
+   float:left; 
+   overflow:hidden; 
+   margin-bottom:5px;
+}
+
+#coffee-div button {
+  border-radius: 2px;
+  height: 45px; 
+  width:95px;
+}
+
+#settings-div {
+  border-radius: 2px;
+  height: 45px; 
+  width:95px; 
+  margin-left:5px; 
+  background-color:grey;
+  overflow:hidden; 
+  float:left; 
+  margin-top:-7px;
+}
+
+#settings-div button {
+   border-radius: 2px;
+   height: 45px; 
+   width:95px;
+}
+
+#home-div {
+   border-radius: 2px;
+   height: 45px; 
+   width:95px; 
+   margin-left:22px; 
+   background-color:grey; 
+   float:left; 
+   overflow:hidden; 
+   margin-bottom:5px;
+}
+
+#home-div button {
+   border-radius: 2px;
+   height: 45px; 
+   width:95px;
+}
+
+#away-div {
+   border-radius: 2px;
+   height: 45px; 
+   width:95px; 
+   margin-left:5px; 
+   background-color:grey;
+   overflow:hidden; 
+   float:left;
+}
+
+#away-div button {
+   border-radius: 2px;
+   height: 45px; 
+   width:95px;
+}
+
+#night-div {
+   border-radius: 2px;
+   height: 45px; 
+   width:95px; 
+   margin-top:-7px; 
+   margin-left:22px; 
+   background-color:grey; 
+   float:left; 
+   overflow:hidden; 
+   margin-bottom:5px;
+}
+
+#night-div button {
+ border-radius: 2px;
+ height: 45px; 
+ width:95px;
+}
+
+#vacation-div {
+   border-radius: 2px;
+   height: 45px; 
+   width:95px; 
+   margin-left:5px; 
+   background-color:grey;
+   overflow:hidden; 
+   float:left; 
+   margin-top:-7px;
+}
+
+#vacation-div button {
+   border-radius: 2px;
+   height: 45px; 
+   width:95px;
+}
+
+#bedroom-div {
+  border-radius: 2px;
+  height: 45px; 
+  width:90px; 
+  margin-left:20px; 
+  background-color:grey; 
+  float:left; 
+  overflow:hidden; 
+  margin-bottom:5px;
+}
+
+#bedroom-div button {
+   border-radius: 2px;
+   height: 45px; 
+   width:90px;
+}
+
+#kitchen-div {
+   border-radius: 2px;
+   height: 45px; 
+   width:90px; 
+   margin-left:5px; 
+   background-color:grey;
+   overflow:hidden; 
+   float:left;
+}
+
+#kitchen-div button {
+  border-radius: 2px;
+  height: 45px; 
+  width:90px;
+}
+
+#garage-div{
+ border-radius: 2px;
+ height: 45px; 
+ width:90px; 
+ margin-left:5px; 
+ float:left; 
+ background-color:grey;
+ overflow:hidden;
+}
+
+#garage-div button {
+  border-radius: 2px;
+  height: 45px; 
+  width:90px;
+}
+
+#livingroom-div {
+ border-radius: 2px;
+ height: 45px; 
+ width:90px; 
+ margin-top:-7px; 
+ margin-left:20px; 
+ background-color:grey; 
+ float:left; 
+ overflow:hidden; 
+ margin-bottom:5px;
+}
+
+#livingroom-div button {
+  border-radius: 2px;
+  height: 45px; 
+  width:90px;
+}
+
+#bathroom-div {
+  border-radius: 2px;
+  height: 45px; 
+  width:90px; 
+  margin-left:5px; 
+  background-color:grey;
+  overflow:hidden; 
+  float:left; 
+  margin-top:-7px;
+}
+
+#bathroom-div button {
+  border-radius: 2px;
+  height: 45px; 
+  width:90px;
+}
+
+#other-areas-div {
+  margin-top:-7px;
+  border-radius: 2px;
+  height: 45px; 
+  width:90px; 
+  margin-left:5px; 
+  float:left; 
+  background-color:grey;
+  overflow:hidden;
+}
+
+#other-areas-div button {
+  border-radius: 2px;
+  height: 45px; 
+  width:90px;
+}
+
+#todo-item {
+   margin-left:20px; 
+   margin-right: 20px;
+   resize:horizontal; 
+   width:200px
+
 }
 
 .period-btn {

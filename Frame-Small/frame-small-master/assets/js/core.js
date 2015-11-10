@@ -41,6 +41,18 @@ function mainController($scope, $http) {
         }  
     };
 
+    $scope.newDumyData = function(){
+        console.log("calling newDumyData!");
+        $http.get('/api/todos/lol')
+        .success(function(data, id) {
+            console.log(data);
+            console.log(id);
+        })
+        .error(function(data) {
+            console.log('Error: ' + data);
+        });
+    };
+
     // delete a todo after checking it
     $scope.deleteTodo = function(id) {
         $http.delete('/api/todos/' + id)
@@ -53,3 +65,7 @@ function mainController($scope, $http) {
             });
     };
 }
+
+
+
+
