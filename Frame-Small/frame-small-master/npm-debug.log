@@ -1,0 +1,74 @@
+0 info it worked if it ends with ok
+1 verbose cli [ 'C:\\Program Files\\nodejs\\\\node.exe',
+1 verbose cli   'C:\\Program Files\\nodejs\\node_modules\\npm\\bin\\npm-cli.js',
+1 verbose cli   'install',
+1 verbose cli   'Moment' ]
+2 info using npm@1.4.28
+3 info using node@v0.10.35
+4 verbose node symlink C:\Program Files\nodejs\\node.exe
+5 warn package.json string_decoder@0.10.31 string_decoder is also the name of a node core module.
+6 verbose readDependencies using package.json deps
+7 verbose cache add [ 'Moment', null ]
+8 verbose cache add name=undefined spec="Moment" args=["Moment",null]
+9 verbose parsed url { protocol: null,
+9 verbose parsed url   slashes: null,
+9 verbose parsed url   auth: null,
+9 verbose parsed url   host: null,
+9 verbose parsed url   port: null,
+9 verbose parsed url   hostname: null,
+9 verbose parsed url   hash: null,
+9 verbose parsed url   search: null,
+9 verbose parsed url   query: null,
+9 verbose parsed url   pathname: 'Moment',
+9 verbose parsed url   path: 'Moment',
+9 verbose parsed url   href: 'Moment' }
+10 silly lockFile 4a5f9ed3-Moment Moment
+11 verbose lock Moment C:\Users\Ole\AppData\Roaming\npm-cache\4a5f9ed3-Moment.lock
+12 silly lockFile 4a5f9ed3-Moment Moment
+13 silly lockFile 4a5f9ed3-Moment Moment
+14 verbose addNamed [ 'Moment', '' ]
+15 verbose addNamed [ null, '*' ]
+16 silly lockFile 31400f02-Moment Moment@
+17 verbose lock Moment@ C:\Users\Ole\AppData\Roaming\npm-cache\31400f02-Moment.lock
+18 silly addNameRange { name: 'Moment', range: '*', hasData: false }
+19 verbose request where is /Moment
+20 verbose request registry https://registry.npmjs.org/
+21 verbose request id f430f945e22b9a55
+22 verbose url raw /Moment
+23 verbose url resolving [ 'https://registry.npmjs.org/', './Moment' ]
+24 verbose url resolved https://registry.npmjs.org/Moment
+25 verbose request where is https://registry.npmjs.org/Moment
+26 info trying registry request attempt 1 at 11:54:43
+27 verbose etag "DPLT5VL8DJFVG74SOKZXZ7OOI"
+28 http GET https://registry.npmjs.org/Moment
+29 http 404 https://registry.npmjs.org/Moment
+30 silly registry.get cb [ 404,
+30 silly registry.get   { 'content-type': 'application/json',
+30 silly registry.get     'cache-control': 'max-age=0',
+30 silly registry.get     'content-length': '2',
+30 silly registry.get     'accept-ranges': 'bytes',
+30 silly registry.get     date: 'Mon, 09 Nov 2015 10:54:45 GMT',
+30 silly registry.get     via: '1.1 varnish',
+30 silly registry.get     age: '0',
+30 silly registry.get     connection: 'keep-alive',
+30 silly registry.get     'x-served-by': 'cache-fra1224-FRA',
+30 silly registry.get     'x-cache': 'MISS',
+30 silly registry.get     'x-cache-hits': '0',
+30 silly registry.get     'x-timer': 'S1447066485.643721,VS0,VE103' } ]
+31 silly lockFile 31400f02-Moment Moment@
+32 silly lockFile 31400f02-Moment Moment@
+33 error 404 Not Found
+33 error 404
+33 error 404 'Moment' is not in the npm registry.
+33 error 404 You should bug the author to publish it
+33 error 404 It was specified as a dependency of 'fh-dashboard-small'
+33 error 404
+33 error 404 Note that you can also install from a
+33 error 404 tarball, folder, or http url, or git url.
+34 error System Windows_NT 6.2.9200
+35 error command "C:\\Program Files\\nodejs\\\\node.exe" "C:\\Program Files\\nodejs\\node_modules\\npm\\bin\\npm-cli.js" "install" "Moment"
+36 error cwd C:\Dev\GithubFolder\Futurehome\frame\Frame-Small\frame-small-master
+37 error node -v v0.10.35
+38 error npm -v 1.4.28
+39 error code E404
+40 verbose exit [ 1, true ]

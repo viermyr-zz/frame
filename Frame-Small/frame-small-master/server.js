@@ -8,6 +8,7 @@ var mongodb         = require('mongodb');
 var https           = require('https');
 var yahooFinance    = require('yahoo-finance');
 var Wunderground    = require('wundergroundnode');
+var moment          = require('moment');
 var wgKey           = '72262bdafda1bf6a';
 var port            = 8082;
 
@@ -38,16 +39,26 @@ var wattagePrHour = mongoose.model('wattagePrHour', {
 var Random = Math.random();
 //Dummy temparary
 function lol() {
-    for (var i = 0; i < 100; i++) {
-        var today = new Date();
-        today.setHours(Math.floor(Math.random() * 24));
-        wattagePrHour.create({
-            date: today,
-            wattage: Math.floor(Math.random() * 200+ 50)
-        }, function (err, wattagePrHour) {
-            if (err)
-                res.send(err);
-        });
+
+    var startDate = new Date(2014,1,1);
+    var endDate = new Date();
+    var days = (endDate.getTime() - startDate.getTime())/1000/60/60/24;
+
+    console.log("Hello: " + days);
+
+    for (var j = 0; j< Math.floor(days); j++) {
+        for (var i = 0; i < 10; i++) {
+            var today = new Date();
+            today.setDate(today.getDate() - j);
+            today.setHours(Math.floor(Math.random() * 24));
+            wattagePrHour.create({
+                date: today,
+                wattage: Math.floor(Math.random() * 2000 + 50)
+            }, function (err, wattagePrHour) {
+                if (err)
+                    res.send(err);
+            });
+        }
     }
 }
 
@@ -127,16 +138,24 @@ app.get("/api/weather/", function(reg, res){
     })
 });
 
-app.get('/api/wattagePrHour/', function(req, res) {
+app.get('/api/wattagePrHour/:startDate', function(req, res) {
+    var startDate = new Date(req.params.startDate);
+    var endDate = new Date();
 
     // use mongoose to get all todos in the database
-    wattagePrHour.find(function(err, wattagePrHour) {
+    wattagePrHour.find({
+        date:
+        {
+            $gte: new Date(startDate),
+            $lte: new Date(endDate)}
+        },
+        function(err, wattagePrHour) {
 
-        // if there is an error retrieving, send the error. nothing after res.send(err) will execute
-        if (err)
-            res.send(err);
+            // if there is an error retrieving, send the error. nothing after res.send(err) will execute
+            if (err)
+                res.send(err);
 
-        res.json(wattagePrHour); // return all todos in JSON format
+            res.json(wattagePrHour); // return all todos in JSON format
     });
 });
 
