@@ -2,6 +2,8 @@ var home		= false;
 var away 		= false;
 var night 		= false;
 var vacation 	= false;
+document.getElementById("home-btn").style.backgroundColor = "#449D44";
+
 
 function toggleMode(mode){
 	if(mode == 'home'){
