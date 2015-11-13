@@ -303,13 +303,14 @@ function getDevices(){
 function CalculateKWH(){
     getDayData(function(labels, data, previousData) {
         average(data, function(value){
+            var numTest = 92;
             document.getElementById('kwhPrHr').innerHTML = Math.floor(value);
         });
     })
 
     getMonthData(function(labels, data, previousData) {
         sum(data, function(value){
-            document.getElementById('kwhPrDay').innerHTML = Math.floor(value);
+            document.getElementById('kwhPrDay').innerHTML = Math.floor(value * 1);
         });
     })
 

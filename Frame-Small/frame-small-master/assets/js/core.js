@@ -35,7 +35,6 @@ function mainController($scope, $http) {
             });
         }  
     };
-
     $scope.newDumyData = function(){
         console.log("calling newDumyData!");
         $http.get('/api/todos/lol')

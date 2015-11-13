@@ -51,7 +51,7 @@ function lol() {
             today.setHours(Math.floor(Math.random() * 24));
             wattagePrHour.create({
                 date: today,
-                wattage: Math.floor(Math.random() * 2000 + 50)
+                wattage: Math.floor(Math.random() * 2 + 1)
             }, function (err, wattagePrHour) {
                 if (err)
                     res.send(err);
