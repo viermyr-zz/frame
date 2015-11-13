@@ -45,7 +45,7 @@ function getYearData(callback) {
                     if (index === -1) continue;
 
                     if (index != previous) {
-                        data[previous] = ((sum / count) / 1000) * 3600 ;
+                        data[previous] = ((sum) / 1000) * 3600 ;
                         previous = index;
                         sum = 0;
                         count = 1;
@@ -54,7 +54,7 @@ function getYearData(callback) {
                     }
                     sum += parseInt(jsonData[i].wattage);
                 }
-                data[previous] = ( ((sum / count) / 1000)* 3600);
+                data[previous] = ( ((sum) / 1000)* 3600);
                 callback(data);
             }
         }
@@ -126,7 +126,7 @@ function getMonthData(callback) {
 
                     if (index != previous) {
                         //console.log("Count:" + count + " Sum:" + sum + "index: " + index)
-                        data[previous] = ((sum / count) / 1000) * 3600 ;
+                        data[previous] = ((sum) / 1000) * 3600 ;
                         previous = index;
                         sum = 0;
                         count = 1;
@@ -135,7 +135,7 @@ function getMonthData(callback) {
                     }
                     sum += parseInt(jsonData[i].wattage);
                 }
-                data[previous] = ( ((sum / count) / 1000)* 3600);
+                data[previous] = ( ((sum) / 1000)* 3600);
                 callback(data);
             }
         }
@@ -179,7 +179,7 @@ function getWeekData(callback) {
                 for (var i = 0; i < jsonData.length; i++) {
 
                     var inScope = false;
-                    
+
                     var hasChangeInMonthCondition = endDate.getDate();
                     if(endDate.getMonth() != startDate.getMonth()){
                         hasChangeInMonthCondition = endDate.getDate() + startDate.getDate();
@@ -201,7 +201,7 @@ function getWeekData(callback) {
 
                     if (index != previous) {
                         //console.log("Count:" + count + " Sum:" + sum + "index: " + index)
-                        data[previous] = ((sum / count) / 1000) * 3600;
+                        data[previous] = ((sum) / 1000) * 3600;
                         previous = index;
                         sum = 0;
                         count = 1;
@@ -210,7 +210,7 @@ function getWeekData(callback) {
                     }
                     sum += parseInt(jsonData[i].wattage);
                 }
-                data[previous] = ( ((sum / count) / 1000) * 3600);
+                data[previous] = ( ((sum) / 1000) * 3600);
                 callback(data);
             }
         }
@@ -288,15 +288,78 @@ GenerateChart(0);
 
 var chartState;
 
+
+function getDevices(){
+    $.ajax({
+        url: "http://localhost:8082/api/getDevices/",
+        success: function (jsonData) {
+            document.getElementById('oLights').innerHTML = jsonData.fragment.site.lighting.on + "/" + jsonData.fragment.site.lighting.total;
+        },
+        error: function(err){
+            console.log(err);
+        }
+    })
+}
+function CalculateKWH(){
+    getDayData(function(labels, data, previousData) {
+        average(data, function(value){
+            document.getElementById('kwhPrHr').innerHTML = Math.floor(value);
+        });
+    })
+
+    getMonthData(function(labels, data, previousData) {
+        sum(data, function(value){
+            document.getElementById('kwhPrDay').innerHTML = Math.floor(value);
+        });
+    })
+
+    getMonthData(function(labels, data, previousData) {
+        sum(data, function(value){
+            document.getElementById('kwhPrWeek').innerHTML = Math.floor(value * 7);
+        });
+    })
+
+    getMonthData(function(labels, data, previousData) {
+        sum(data, function(value){
+            document.getElementById('kwhPrMonth').innerHTML = Math.floor(value * 7 * 4);
+        });
+    })
+}
+
+function average(data, callback){
+    var sum = 0;
+    var i = 0;
+    for(; i < data.length; i++){
+        if(data[i] != 0)
+            sum += data[i];
+    }
+    var kwhPr = sum / i;
+    callback(kwhPr);
+}
+
+function sum(data, callback){
+    var sum = 0;
+    var i = 0;
+    for(; i < data.length; i++){
+        if(data[i] != 0)
+            sum += data[i];
+    }
+    var kwhPr = sum;
+    callback(kwhPr);
+}
+
 function GenerateChart(chartType){
 
     if(chartType != null) {
         chartState = chartType;
     }
+    CalculateKWH()
+    getDevices()
 
 //Days
     if(chartState == 0) {
         getDayData(setupLineChart);
+
     }
 //Week
     if(chartState == 1) {
@@ -316,7 +379,6 @@ function setupLineChart(labels, data, previousData) {
     if(lineChart != undefined){
         lineChart.destroy();
     }
-
 
     window.chartOptions = {
         animation: false

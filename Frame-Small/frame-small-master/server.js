@@ -44,8 +44,6 @@ function lol() {
     var endDate = new Date();
     var days = (endDate.getTime() - startDate.getTime())/1000/60/60/24;
 
-    console.log("Hello: " + days);
-
     for (var j = 0; j< Math.floor(days); j++) {
         for (var i = 0; i < 10; i++) {
             var today = new Date();
@@ -163,6 +161,13 @@ app.get('/api/wattagePrHour/:startDate', function(req, res) {
             res.json(wattagePrHour); // return all todos in JSON format
     });
 });
+app.get('/api/getDevices/', function(req, res) {
+    getFuturehomeAPI(function(data){
+        console.log(data);
+        res.json(data);
+    });
+
+});
 
 var getFuturehomeAPI = function(callback){
 
@@ -196,6 +201,20 @@ var getFuturehomeAPI = function(callback){
         });
     });
 }
+
+var interval = setInterval(function() {
+    getFuturehomeAPI(function(futurehomeJson){
+        wattagePrHour.create({
+            date : Date.now(),
+            wattage: futurehomeJson.fragment.site.power.wattage
+        }, function(err, wattagePrHour) {
+            if (err)
+                res.send(err);
+        });
+    })
+
+}, 1000*60);
+
 
 
 
