@@ -23,11 +23,6 @@ function mainController($scope, $http) {
             alert("Please enter an Item");
 
         } else {
-            /*for (var i = 0; i < 100; i++){
-             if(insertedTodo == Todo.find({"text": i})){
-             alert("Already in the list");
-             }
-             }*/
 
             $http.post('/api/todos', $scope.formData)
                 .success(function (data) {

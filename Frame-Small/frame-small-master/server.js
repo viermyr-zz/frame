@@ -117,6 +117,7 @@ app.get('/api/todos/lol', function(req , res) {
     // use mongoose to get all todos in the database
 });
 
+
 // delete a 2do
 app.delete('/api/todos/:todo_id', function(req, res) {
     

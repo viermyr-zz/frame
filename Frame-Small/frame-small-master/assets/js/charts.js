@@ -348,3 +348,6 @@ function setupLineChart(labels, data, previousData) {
     lineChart = new Chart(buyers).Line(buyerData, window.chartOptions);
 
 };
+
+
+

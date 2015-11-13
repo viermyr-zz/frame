@@ -28,7 +28,7 @@ $(function(){
 
                 // TODAYS WEATHER ********************************
                 // Location of the person
-                //document.getElementById('wCity').innerHTML = "Oslo";
+                document.getElementById('wCity').innerHTML = parsed_json['location']['city'];
 
                 // The current temperature @ location
                 var temp_f = parsed_json['current_observation']['temp_f'];
@@ -50,6 +50,8 @@ $(function(){
                 // The day of the week (short)
                 var forecastDayPlus1 = {};
                 var jsonPath = parsed_json["forecast"]["simpleforecast"]["forecastday"];
+
+                console.log(jsonPath);
 
                 forecastDayPlus1.shortTxt = jsonPath[1]["date"]["weekday_short"];
                 // console.log(forecastDayPlus1.shortTxt);
