@@ -125,7 +125,7 @@ function getMonthData(callback) {
                     if (index === -1) continue;
 
                     if (index != previous) {
-                        //console.log("Count:" + count + " Sum:" + sum + "index: " + index)
+                        
                         data[previous] = ((sum) / 1000) * 3600 ;
                         previous = index;
                         sum = 0;
@@ -149,7 +149,7 @@ function getWeekData(callback) {
     var getDataFromDate = new Date();
     getDataFromDate.setDate(startDate.getDate() - 7);
 
-    console.log(getDataFromDate);
+    //console.log(getDataFromDate);
     var labels =  ["Mon", "Tue", "Wen", "Thu", "Fri", "Sat", "Sun"]
 
     $.ajax({

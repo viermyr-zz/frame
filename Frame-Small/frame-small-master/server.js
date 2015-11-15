@@ -37,16 +37,20 @@ var wattagePrHour = mongoose.model('wattagePrHour', {
 
 
 var Random = Math.random();
-//Dummy temparary
+// Dummy temporary
 function lol() {
 
     var startDate = new Date(2014,1,1);
+    console.log(startDate);
     var endDate = new Date();
+    console.log(endDate);
     var days = (endDate.getTime() - startDate.getTime())/1000/60/60/24;
+    console.log(days);
 
     for (var j = 0; j< Math.floor(days); j++) {
         for (var i = 0; i < 10; i++) {
             var today = new Date();
+            console.log(today);
             today.setDate(today.getDate() - j);
             today.setHours(Math.floor(Math.random() * 24));
             wattagePrHour.create({
@@ -61,7 +65,6 @@ function lol() {
 }
 
 // routes ======================================================================
-
 
 // api ---------------------------------------------------------------------
 
@@ -163,7 +166,7 @@ app.get('/api/wattagePrHour/:startDate', function(req, res) {
 });
 app.get('/api/getDevices/', function(req, res) {
     getFuturehomeAPI(function(data){
-        console.log(data);
+        //console.log(data);
         res.json(data);
     });
 

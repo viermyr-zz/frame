@@ -51,7 +51,7 @@ $(function(){
                 var forecastDayPlus1 = {};
                 var jsonPath = parsed_json["forecast"]["simpleforecast"]["forecastday"];
 
-                console.log(jsonPath);
+                // console.log(jsonPath);
 
                 forecastDayPlus1.shortTxt = jsonPath[1]["date"]["weekday_short"];
                 // console.log(forecastDayPlus1.shortTxt);
@@ -149,3 +149,5 @@ $(function(){
 
     }
 });
+
+// kwh/year = 19655 
